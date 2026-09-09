@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IJAIO 2026 · Official Timed Mock Examination</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/mock_quiz.css">
+</head>
+<body>
+
+  <div class="rainbow-stripe"></div>
+
+  <!-- Top Sticky Navigation -->
+  <nav>
+    <a href="index.html" class="brand-title">
+      <span class="brand-badge">AI</span>
+      <span class="brand-title">IJAIO EXAM SIMULATOR<span>2026</span></span>
+    </a>
+
+    <!-- Back to Main Syllabus Button -->
+    <button class="back-home-btn" onclick="confirmExit()">
+      ← Exit to Syllabus
+    </button>
+  </nav>
+
+  <main>
+    <!-- STEP 1: Level Selector Screen -->
+    <section id="setupScreen" class="exam-card">
+      <div class="badge-pill">★ Official IJAIO Competition Practice</div>
+      <h1 class="page-title">Mock Examination Center</h1>
+      <p class="page-subtitle">
+        Select your age band to begin the timed examination simulation. Answers and explanations will be generated after final submission.
+      </p>
+
+      <div class="level-select-grid">
+        <div class="level-card" onclick="startExam('prilower')">
+          <span class="band-tag tag-prilower">Grades 1–3</span>
+          <h3>Lower Primary</h3>
+          <p class="exam-meta">⏱️ 45 Minutes · 100 Marks</p>
+          <p class="exam-details">20 MCQ (60 marks) + 2 Structured Tasks (40 marks)</p>
+          <button class="btn-start">Start Examination →</button>
+        </div>
+
+        <div class="level-card" onclick="startExam('priupper')">
+          <span class="band-tag tag-priupper">Grades 4–6</span>
+          <h3>Upper Primary</h3>
+          <p class="exam-meta">⏱️ 60 Minutes · 100 Marks</p>
+          <p class="exam-details">30 MCQ (60 marks) + 2 Structured Tasks (40 marks)</p>
+          <button class="btn-start">Start Examination →</button>
+        </div>
+
+        <div class="level-card" onclick="startExam('seclower')">
+          <span class="band-tag tag-seclower">Grades 7–8</span>
+          <h3>Lower Secondary</h3>
+          <p class="exam-meta">⏱️ 90 Minutes · 100 Marks</p>
+          <p class="exam-details">20 MCQ (40 marks) + 3 Practical Tasks (60 marks)</p>
+          <button class="btn-start">Start Examination →</button>
+        </div>
+
+        <div class="level-card" onclick="startExam('secupper')">
+          <span class="band-tag tag-secupper">Grades 9–12</span>
+          <h3>Upper Secondary</h3>
+          <p class="exam-meta">⏱️ 90 Minutes · 100 Marks</p>
+          <p class="exam-details">20 MCQ (40 marks) + 3 Practical Tasks (60 marks)</p>
+          <button class="btn-start">Start Examination →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2: Live Examination Active Screen -->
+    <div id="examActiveScreen" style="display: none;">
+      
+      <!-- Back / Exit Exam Bar Header -->
+      <div class="quiz-nav-header">
+        <button class="back-home-btn" onclick="confirmExit()">
+          ← Cancel & Back to Setup
+        </button>
+        <div class="quiz-badge-tag">Exam in Progress</div>
+      </div>
+
+      <!-- Sticky Exam Timer Header Bar -->
+      <div class="timer-bar" id="timerBar">
+        <div>
+          <span class="exam-level-tag" id="activeLevelTag">Lower Primary Exam</span>
+          <span class="timer-label">Time Remaining:</span>
+        </div>
+        <div class="timer-clock" id="timerClock">00:00</div>
+        <button class="btn-submit-exam" onclick="submitExam(false)">Finish & Submit Exam</button>
+      </div>
+
+      <!-- Multiple Choice Questions Section -->
+      <section class="exam-section">
+        <h2 class="section-title">Section A: Multiple Choice Questions</h2>
+        <div id="mcqExamContainer" class="q-stack"></div>
+      </section>
+
+      <!-- Structured / Practical Tasks Section -->
+      <section class="exam-section">
+        <h2 class="section-title">Section B: Structured & Practical Tasks</h2>
+        <div id="tasksExamContainer" class="q-stack"></div>
+      </section>
+
+      <div style="text-align: center; margin-top: 30px;">
+        <button class="btn-submit-exam-large" onclick="submitExam(false)">
+          ✓ Finish & Submit Examination
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Results & Explanation Page -->
+    <div id="resultsScreen" style="display: none;">
+      
+      <div class="quiz-nav-header">
+        <button class="back-home-btn" onclick="window.location.href='index.html'">
+          ← Back to Main Syllabus
+        </button>
+        <div class="quiz-badge-tag">Results View</div>
+      </div>
+
+      <section class="header-card results-header">
+        <div>
+          <div class="badge-pill">★ Examination Completed</div>
+          <h1 class="page-title">Results & Detailed Explanations</h1>
+          <p class="page-subtitle" id="resultSubtitle">
+            Here is your performance report, correct answers, and evaluation rubrics.
+          </p>
+        </div>
+
+        <div class="score-summary-box">
+          <div class="score-big" id="finalScoreVal">0 / 100</div>
+          <div class="score-pct" id="finalScorePct">0% Score</div>
+        </div>
+      </section>
+
+      <!-- Results MCQ Review Container -->
+      <section class="exam-section">
+        <h2 class="section-title">Section A: MCQ Review & Correct Answers</h2>
+        <div id="mcqResultsContainer" class="q-stack"></div>
+      </section>
+
+      <!-- Results Structured Tasks Rubric Review Container -->
+      <section class="exam-section">
+        <h2 class="section-title">Section B: Practical Tasks Model Answers & Rubrics</h2>
+        <div id="tasksResultsContainer" class="q-stack"></div>
+      </section>
+
+      <div style="text-align: center; margin-top: 40px; display: flex; justify-content: center; gap: 14px;">
+        <button class="btn-submit-exam-large" onclick="location.reload()">
+          ↻ Take Another Mock Exam
+        </button>
+        <button class="back-home-btn" style="padding: 14px 28px; font-size: 16px;" onclick="window.location.href='index.html'">
+          ← Exit to Syllabus
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- External JS -->
+  <script src="js/mock_quiz.js"></script>
+</body>
+</html>

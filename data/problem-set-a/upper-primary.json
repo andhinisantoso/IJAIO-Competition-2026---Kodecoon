@@ -1,0 +1,561 @@
+{
+  "level": "priupper",
+  "levelName": "Upper Primary",
+  "grades": "Grades 4–6",
+  "marksPerMcq": 2,
+  "mcqs": [
+    {
+      "q": "What can <b>generative AI</b> do that a normal calculator cannot?",
+      "tag": "genai",
+      "o": [
+        "create brand-new text, images or music",
+        "add a long list of numbers",
+        "work out long sums very fast",
+        "show the answer on a small screen"
+      ],
+      "a": 0,
+      "e": "<b>Generative AI</b> produces brand-new content based on patterns it learned; the other options are ordinary computer tasks.",
+      "lo": [
+        "UP.P3.1"
+      ]
+    },
+    {
+      "q": "You want a clearer answer from a chatbot. Which change to your typed request (your prompt) helps most?",
+      "tag": "genai",
+      "o": [
+        "repeat the same request several times",
+        "add a role, a clear task and a limit",
+        "make the request as short as possible",
+        "write the whole request in capitals"
+      ],
+      "a": 1,
+      "e": "A <b>prompt</b> works best with a role, a specific task and a constraint; vague prompts give vague answers.",
+      "lo": [
+        "UP.P3.3"
+      ]
+    },
+    {
+      "q": "A chatbot like a Large Language Model mainly works by…",
+      "tag": "genai",
+      "o": [
+        "storing every possible answer in a database",
+        "following a fixed set of grammar rules",
+        "searching the live web for each reply",
+        "predicting the next likely word, step by step"
+      ],
+      "a": 3,
+      "e": "An LLM <b>predicts the next word</b> again and again, using patterns from huge amounts of text.",
+      "lo": [
+        "UP.P3.1"
+      ]
+    },
+    {
+      "q": "AI systems learn their skills mainly from…",
+      "tag": "fp",
+      "o": [
+        "a single built-in fixed rule",
+        "random guessing each time",
+        "advice from one human expert",
+        "lots of example data"
+      ],
+      "a": 3,
+      "e": "AI learns patterns from <b>training data</b>. The data shapes what it can and cannot do.",
+      "lo": [
+        "UP.P2.1"
+      ]
+    },
+    {
+      "q": "An AI turns words into number-lists (vectors) so that words with similar meanings get…",
+      "tag": "fp",
+      "o": [
+        "completely random numbers",
+        "the same number as every other word",
+        "similar numbers, sitting close together",
+        "no numbers at all"
+      ],
+      "a": 2,
+      "e": "Similar meanings get <b>similar numbers</b> - the idea behind embeddings.",
+      "lo": [
+        "UP.P1.1"
+      ]
+    },
+    {
+      "q": "To sort fruit photos into groups when no names are given, the AI looks for…",
+      "tag": "fp",
+      "o": [
+        "shared features such as colour and shape",
+        "the name of the photographer",
+        "the date each file was saved",
+        "the order they were uploaded"
+      ],
+      "a": 0,
+      "e": "Grouping by <b>shared features</b> is how unlabelled data is organised.",
+      "lo": [
+        "UP.P1.2",
+        "UP.P2.4"
+      ]
+    },
+    {
+      "q": "A robot dog earns a point each time it takes a step without falling, and loses a point when it falls. After many tries it walks smoothly. How did it learn?",
+      "tag": "fp",
+      "o": [
+        "by copying a rule book written by its makers",
+        "by memorising a video of another robot walking",
+        "by asking its owner before every single step",
+        "by trial and error, keeping the actions that earned rewards"
+      ],
+      "a": 3,
+      "e": "Learning from <b>rewards by trial and error</b> is called <b>reinforcement learning</b> - moves that earn points get repeated, and moves that lose points get dropped.",
+      "lo": [
+        "UP.P2.5"
+      ]
+    },
+    {
+      "q": "A shocking video shows a real politician saying something they never said; it was AI-made. Before reacting, the wise step is to…",
+      "tag": "ethics",
+      "o": [
+        "share it immediately so others see it",
+        "check whether it is a genuine clip from a trusted source",
+        "assume it is real because it looks real",
+        "add your own caption and repost it"
+      ],
+      "a": 1,
+      "e": "AI-made fakes of real people (<b>deepfakes</b>) can look convincing; verify with trusted sources before believing or sharing.",
+      "lo": [
+        "UP.P5.1",
+        "UP.P5.2"
+      ]
+    },
+    {
+      "q": "You sketch an AI “homework checker”. A sensible FAILURE to plan for - with a fix - is…",
+      "tag": "fp",
+      "o": [
+        "it confuses two pupils' similar handwriting; fix: ban handwriting",
+        "it works slowly at busy times; fix: skip the checking step",
+        "it marks a messy but correct answer wrong; fix: allow human review",
+        "it needs many example answers; fix: train it on none"
+      ],
+      "a": 2,
+      "e": "Naming a likely <b>failure</b> and a <b>fix</b> (human review) is good design.",
+      "lo": [
+        "UP.P4.2",
+        "UP.P4.3"
+      ]
+    },
+    {
+      "q": "You use AI to make a picture, then enter it in an art contest as if you drew it yourself. This is mainly a problem of…",
+      "tag": "ethics",
+      "o": [
+        "the image resolution chosen",
+        "the colour balance settings",
+        "honesty and giving credit",
+        "the saved file format"
+      ],
+      "a": 2,
+      "e": "Being <b>honest</b> about AI’s help matters. Claiming AI work as fully your own is unfair to others.",
+      "lo": [
+        "UP.P5.3"
+      ]
+    },
+    {
+      "q": "These examples follow one rule. Work out the rule, then give the output for 10.",
+      "byhand": "2 → 3&nbsp;&nbsp;&nbsp; 3 → 5&nbsp;&nbsp;&nbsp; 4 → 7&nbsp;&nbsp;&nbsp; 10 → <b>?</b>",
+      "o": [
+        "19",
+        "21",
+        "20",
+        "11"
+      ],
+      "a": 0,
+      "e": "Each output is double the input minus one (2→3, 3→5, 4→7), so 10→<b>19</b>. Inferring a rule from examples and applying it to a new input is the core idea behind machine learning.",
+      "tag": "byhand",
+      "lo": [
+        "UP.P2.1"
+      ]
+    },
+    {
+      "q": "Follow the rules. RULE 1: if a word has the letter ‘z’, score 2. RULE 2: if it is longer than 4 letters, score 1. Word: “pizza”. Total score?",
+      "tag": "byhand",
+      "byhand": "“pizza” → has ‘z’ (+2) and 5 letters (+1)",
+      "o": [
+        "2",
+        "4",
+        "1",
+        "3"
+      ],
+      "a": 3,
+      "e": "2 + 1 = <b>3</b>. Adding up rule points step by step is how a simple AI scores things.",
+      "lo": [
+        "UP.P2.2"
+      ]
+    },
+    {
+      "q": "An <b>AI agent</b> is different from a plain chatbot because it can…",
+      "tag": "agent",
+      "o": [
+        "store far more of your past conversations",
+        "reply with much longer, more detailed messages",
+        "run without needing any electricity at all",
+        "plan steps and use tools to reach a goal"
+      ],
+      "a": 3,
+      "e": "An <b>agent</b> plans, takes actions and can use tools (like searching or a calculator) to finish a task.",
+      "lo": [
+        "UP.P4.1"
+      ]
+    },
+    {
+      "q": "Which is the SAFEST thing to paste into a public chatbot?",
+      "tag": "ethics",
+      "o": [
+        "Your friend’s home address",
+        "A made-up practice question",
+        "A family member’s password",
+        "A classmate’s medical note"
+      ],
+      "a": 1,
+      "e": "Never share <b>private information</b> about yourself or others. Made-up practice content is fine.",
+      "lo": [
+        "UP.P5.2"
+      ]
+    },
+    {
+      "q": "Before trusting an important fact from AI, you should…",
+      "tag": "ethics",
+      "o": [
+        "repeat it so you remember it",
+        "share it with your classmates",
+        "check it against a reliable source",
+        "save it as a screenshot"
+      ],
+      "a": 2,
+      "e": "AI can be wrong, so <b>verify important facts</b> with a trusted source.",
+      "lo": [
+        "UP.P5.2"
+      ]
+    },
+    {
+      "q": "What is the difference between <b>classifying</b> and <b>generating</b>?",
+      "tag": "genai",
+      "o": [
+        "Classifying sorts items; generating makes new content",
+        "Both simply mean creating brand-new pictures",
+        "Classifying writes text while generating deletes it",
+        "They are two different names for the same thing"
+      ],
+      "a": 0,
+      "e": "<b>Classification</b> labels/sorts existing things; <b>generation</b> creates new things.",
+      "lo": [
+        "UP.P2.2"
+      ]
+    },
+    {
+      "q": "Which prompt is likely to give the BEST result?",
+      "tag": "genai",
+      "o": [
+        "“Write a poem about an animal.”",
+        "“Make a cat poem, any length is fine.”",
+        "“Do a nice poem for me, please and thanks.”",
+        "“Write a funny 4-line poem about a sleepy cat.”"
+      ],
+      "a": 3,
+      "e": "A <b>specific, clear prompt</b> (topic, length, style, audience) gives better generative results than a vague one.",
+      "lo": [
+        "UP.P3.1",
+        "UP.P3.2"
+      ]
+    },
+    {
+      "q": "Some artists are upset that AI learned from their drawings without asking. This is a debate about…",
+      "tag": "ethics",
+      "o": [
+        "fairness and consent for training data",
+        "the layout of the app's menus",
+        "the speed of the internet",
+        "which file format to use"
+      ],
+      "a": 0,
+      "e": "Who owns the data AI learns from, and whether <b>permission</b> was given, is a real ethical debate.",
+      "lo": [
+        "UP.P2.3"
+      ]
+    },
+    {
+      "q": "Does a chatbot truly “understand” your words the way a human friend does?",
+      "tag": "genai",
+      "o": [
+        "Yes, exactly like a human friend does",
+        "Yes, it genuinely feels real emotions",
+        "No, it only predicts language patterns",
+        "Only for very simple, everyday questions"
+      ],
+      "a": 2,
+      "e": "AI matches <b>patterns</b> in language. It does not understand or feel as people do.",
+      "lo": [
+        "UP.P3.1"
+      ]
+    },
+    {
+      "q": "Which of these is a real-world cost of training a big AI model?",
+      "tag": "ethics",
+      "o": [
+        "it wears out the user's keyboard",
+        "it uses large amounts of electricity and water",
+        "it uses up the internet's words",
+        "it makes other computers run slower worldwide"
+      ],
+      "a": 1,
+      "e": "Training and serving big models runs on data centres that draw <b>electricity and cooling water</b> - a real cost someone pays.",
+      "lo": [
+        "UP.P5.4"
+      ]
+    },
+    {
+      "q": "You read an amazing online story “written by a student.” A clue it might be AI-made is that it…",
+      "tag": "ethics",
+      "o": [
+        "was posted on the site fairly recently",
+        "is neatly divided into several paragraphs",
+        "has a clear, descriptive title at the top",
+        "is polished yet gets simple facts wrong"
+      ],
+      "a": 3,
+      "e": "AI text can read smoothly yet contain <b>made-up facts</b> or a generic tone - stay curious and check.",
+      "lo": [
+        "UP.P5.1"
+      ]
+    },
+    {
+      "q": "A tiny “points machine” decides if an email is spam. +3 if it says “free prize”, +2 if it has many links, −1 if from a known friend. Email: “FREE PRIZE!! click these links” from a stranger. Score?",
+      "tag": "byhand",
+      "byhand": "RULES: +3 “free prize” · +2 many links · −1 known friend",
+      "o": [
+        "4",
+        "5",
+        "3",
+        "6"
+      ],
+      "a": 1,
+      "e": "3 + 2 = <b>5</b>. A higher score means “more likely spam.” You computed a simple model yourself.",
+      "lo": [
+        "UP.P2.2"
+      ]
+    },
+    {
+      "q": "You have checked carefully and are now SURE a shocking video of a classmate is an AI-made fake. The responsible next step is to…",
+      "tag": "ethics",
+      "o": [
+        "repost it with a warning caption",
+        "report it to a trusted adult or the platform",
+        "keep a copy to show friends later",
+        "do nothing - fakes are harmless"
+      ],
+      "a": 1,
+      "e": "When you find a harmful fake, <b>report it</b> so it can be taken down. Spreading it further - even with a warning - still increases the harm.",
+      "lo": [
+        "UP.P5.1",
+        "UP.P5.2"
+      ]
+    },
+    {
+      "q": "Generative AI can also help programmers by…",
+      "tag": "genai",
+      "o": [
+        "guaranteeing the code has no mistakes",
+        "finding every bug with no human checking",
+        "drafting code for a person to check and test",
+        "running finished code faster"
+      ],
+      "a": 2,
+      "e": "AI can <b>draft code</b>, but humans must still check and test it.",
+      "lo": [
+        "UP.P3.4",
+        "UP.P3.1"
+      ]
+    },
+    {
+      "q": "When a voice assistant hears you speak, turning the sound into words it can work with happens in its…",
+      "tag": "agent",
+      "o": [
+        "acting step",
+        "sensing step",
+        "reward step",
+        "sleeping step"
+      ],
+      "a": 1,
+      "e": "Hearing and converting your speech is the agent's <b>sense</b> step - input first, then think, then act.",
+      "lo": [
+        "UP.P4.1"
+      ]
+    },
+    {
+      "q": "Who often prepares the labelled examples that AI learns from?",
+      "tag": "ethics",
+      "o": [
+        "the model invents all labels itself",
+        "people who label the data manually",
+        "labels are copied automatically online",
+        "no labels are needed at all"
+      ],
+      "a": 1,
+      "e": "<b>People label data</b> (e.g., “this is a cat”), so human choices shape the AI.",
+      "lo": [
+        "UP.P1.3",
+        "UP.P2.3"
+      ]
+    },
+    {
+      "q": "Your friend wants to ask a chatbot for medical advice about a real illness. The wisest thing is to…",
+      "tag": "ethics",
+      "o": [
+        "fully trust the chatbot’s diagnosis",
+        "see a doctor; AI is not a substitute",
+        "ask it exactly which medicine to take",
+        "just wait and see if it passes on its own"
+      ],
+      "a": 1,
+      "e": "For health, money or safety, rely on <b>qualified people</b>. AI can give wrong or unsafe answers.",
+      "lo": [
+        "UP.P5.2"
+      ]
+    },
+    {
+      "q": "A GOOD use of AI that helps people is…",
+      "tag": "ethics",
+      "o": [
+        "describing images for the blind",
+        "writing fake product reviews for money",
+        "automatically liking all your own posts",
+        "secretly copying answers during a test"
+      ],
+      "a": 0,
+      "e": "AI can <b>improve accessibility</b>, such as describing images for blind users - a positive use.",
+      "lo": [
+        "UP.P4.4"
+      ]
+    },
+    {
+      "q": "A face-recognition tool works well for some people but makes more mistakes for others. This shows the importance of…",
+      "tag": "ethics",
+      "o": [
+        "using much higher-resolution cameras",
+        "training the staff to type much faster",
+        "adding several more display screens",
+        "testing AI for fairness"
+      ],
+      "a": 3,
+      "e": "AI should be <b>tested for fairness</b> so it does not disadvantage some groups.",
+      "lo": [
+        "UP.P1.4",
+        "UP.P2.3"
+      ]
+    },
+    {
+      "q": "The most responsible way to use generative AI for schoolwork is to…",
+      "tag": "ethics",
+      "o": [
+        "hand in its output as if it were your own work",
+        "use it but never bother to fact-check what it says",
+        "learn from it, then verify",
+        "let it complete your entire exam for you"
+      ],
+      "a": 2,
+      "e": "Responsible use = <b>learn, verify, and be honest</b> about AI’s help.",
+      "lo": [
+        "UP.P3.1",
+        "UP.P5.2"
+      ]
+    }
+  ],
+  "structured": [
+    {
+      "title": "Task 1 · Build a “Points Machine” from First Principles",
+      "tags": [
+        "byhand",
+        "ethics"
+      ],
+      "marks": 20,
+      "scenario": "A school wants a simple AI to flag <b>possibly unkind messages</b> for a teacher to check. The “points machine” gives each message a score:<br>\n      • +3 if it contains a mean name<br>• +2 if it is in ALL CAPITAL LETTERS<br>• +1 if it has 3 or more “!”<br>• −2 if the sender often sends kind messages<br><br>\n      Flag a message if the score is <b>3 or more</b>.",
+      "parts": [
+        "a) Score this message from a usually-kind sender: “YOU ARE A LOSER!!!”  Show your working.",
+        "b) Should the message be flagged? Explain using your score.",
+        "c) The machine flags a message that was actually a joke between best friends. Why can a simple rule machine make this mistake, and why should a human still check before anyone is punished?"
+      ],
+      "model": [
+        {
+          "pts": "a) 8 marks",
+          "text": "+3 (mean name “loser”) +2 (ALL CAPS) +1 (3 “!”) −2 (kind sender) = <b>4</b>. (2 marks per correct rule applied.)",
+          "rationale": "Rewards executing a scoring model step by step and combining positive and negative weights correctly."
+        },
+        {
+          "pts": "b) 4 marks",
+          "text": "Yes - 4 is ≥ 3, so it is flagged for a teacher to look at.",
+          "rationale": "Checks the learner applies the decision threshold, the core of a simple classifier."
+        },
+        {
+          "pts": "c) 8 marks",
+          "text": "The machine only counts words/CAPS; it cannot understand tone, friendship or jokes (context). So it gives <b>false positives</b>. A human should make the final call so no one is unfairly punished by a rule that missed the meaning.",
+          "rationale": "Surfaces the key dilemma: automated systems lack context and can be unfair, so meaningful human oversight protects people."
+        }
+      ],
+      "totalNote": "Full marks: correct score (a), correct flag decision (b), and a clear explanation of why human oversight matters (c).",
+      "partLo": [
+        [
+          "UP.P2.2"
+        ],
+        [
+          "UP.P2.2"
+        ],
+        [
+          "UP.P2.2"
+        ]
+      ]
+    },
+    {
+      "title": "Task 2 · Design a Responsible Homework-Helper Agent",
+      "tags": [
+        "agent",
+        "genai",
+        "ethics"
+      ],
+      "marks": 20,
+      "scenario": "An <b>AI agent</b> can <b>sense</b> a request, <b>plan</b> steps, <b>use tools</b> (like a calculator or web search), and <b>act</b> to help reach a goal.<br><br>\n      Design a generative-AI “study buddy” agent whose goal is to help a Grade 5 student <b>learn</b>, not to do the work for them.",
+      "parts": [
+        "a) List two tools your agent could use and what each is for.",
+        "b) Write the agent’s plan as 3–4 steps for helping with a maths question (sense → plan → act).",
+        "c) <b>Dilemma:</b> The student types, “Just give me all the answers to my graded test so I can copy them.” What should a responsible study-buddy do and say, and why?"
+      ],
+      "model": [
+        {
+          "pts": "a) 4 marks",
+          "text": "Any two sensible tools, e.g., a calculator (to check arithmetic) and a search/reference tool (to find an explanation or example). (2 marks each.)",
+          "rationale": "Tests understanding that agents extend their abilities with external tools rather than ‘knowing everything’."
+        },
+        {
+          "pts": "b) 8 marks",
+          "text": "e.g., 1) Sense/read the question; 2) Plan: break it into steps; 3) Act: guide the student with hints and one worked example; 4) Check the student’s answer and give feedback. (2 marks per clear stage.)",
+          "rationale": "Rewards a genuine sense→plan→act loop aimed at teaching, not just outputting an answer."
+        },
+        {
+          "pts": "c) 8 marks",
+          "text": "It should <b>decline</b> to hand over graded-test answers and explain why (that would be cheating and would stop real learning). Instead it offers to teach the method, give practice questions, or hints. A good answer notes honesty/academic integrity and that the helper’s goal is learning.",
+          "rationale": "A real dilemma between being ‘helpful’ and being ethical. Strong answers show the agent must refuse harm and redirect toward legitimate help - early alignment thinking."
+        }
+      ],
+      "totalNote": "Full marks: useful tools (a), a teaching-focused agent loop (b), and a principled refusal with a helpful alternative (c).",
+      "partLo": [
+        [
+          "UP.P4.4"
+        ],
+        [
+          "UP.P4.4",
+          "UP.P4.1"
+        ],
+        [
+          "UP.P4.4",
+          "UP.P5.3"
+        ]
+      ]
+    }
+  ]
+}

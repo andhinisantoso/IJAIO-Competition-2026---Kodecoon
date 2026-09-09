@@ -1,0 +1,468 @@
+{
+  "level": "seclower",
+  "levelName": "Lower Secondary",
+  "grades": "Grades 7–9",
+  "marksPerMcq": 2,
+  "mcqs": [
+    {
+      "q": "To a computer, a photo is really a grid of…",
+      "tag": "fp",
+      "o": [
+        "numbers (one or more per pixel)",
+        "letters, one per object",
+        "short text labels describing it",
+        "recorded sound waves"
+      ],
+      "a": 0,
+      "e": "An image is a <b>grid of number-pixels</b> - the start of computer vision.",
+      "lo": [
+        "LS.P1.5"
+      ]
+    },
+    {
+      "q": "A model splits your sentence into sub-word pieces before processing. A practical consequence of working on these pieces (not letters) is that the model…",
+      "tag": "fp",
+      "o": [
+        "can miscount the letters in a word",
+        "always spells perfectly",
+        "reads one character at a time",
+        "cannot handle any new words"
+      ],
+      "a": 0,
+      "e": "Working on <b>tokens</b> (sub-word pieces) explains why a model can miscount letters or mis-split rare words.",
+      "lo": [
+        "LS.P1.1",
+        "LS.P1.2",
+        "LS.P1.3"
+      ]
+    },
+    {
+      "q": "Raising the <b>temperature</b> setting of a generative model usually makes its output…",
+      "tag": "genai",
+      "o": [
+        "more factually accurate",
+        "strictly shorter in length",
+        "more random and varied",
+        "faster to generate"
+      ],
+      "a": 2,
+      "e": "Higher <b>temperature</b> increases randomness/creativity; lower temperature makes output more focused and predictable.",
+      "lo": [
+        "LS.P3.1"
+      ]
+    },
+    {
+      "q": "Word <b>embeddings</b> represent words as vectors so that…",
+      "tag": "genai",
+      "o": [
+        "every single word receives an identical vector",
+        "words get directly converted into images",
+        "vectors are always limited to two numbers each",
+        "words with similar meanings sit close together"
+      ],
+      "a": 3,
+      "e": "<b>Embeddings</b> place similar meanings near each other, letting models measure how related words are.",
+      "lo": [
+        "LS.P1.4"
+      ]
+    },
+    {
+      "q": "In <b>supervised</b> learning, the training data includes…",
+      "tag": "fp",
+      "o": [
+        "no data at all",
+        "labelled correct answers",
+        "only the model’s own guesses",
+        "unlabelled raw text only"
+      ],
+      "a": 1,
+      "e": "<b>Supervised</b> learning uses labelled examples; the ‘unlabelled’ option describes <b>unsupervised</b> learning.",
+      "lo": [
+        "LS.P2.2"
+      ]
+    },
+    {
+      "q": "You want a model to output every answer as a JSON object. Which approach most reliably gets the format right first time?",
+      "tag": "genai",
+      "o": [
+        "Ask once with no examples and hope",
+        "Raise the temperature to maximum",
+        "Put two or three worked input→output examples in the prompt (few-shot)",
+        "Repeat the word JSON many times"
+      ],
+      "a": 2,
+      "e": "Showing a few worked examples (<b>few-shot prompting</b>) demonstrates the exact format you want.",
+      "lo": [
+        "LS.P4.1",
+        "LS.P4.2"
+      ]
+    },
+    {
+      "q": "Why do LLMs sometimes ‘hallucinate’ (state false things confidently)?",
+      "tag": "genai",
+      "o": [
+        "they optimise for plausible text, not verified truth",
+        "they are deliberately trying to deceive the user",
+        "they have simply run low on memory",
+        "they copy their answers directly from Wikipedia articles"
+      ],
+      "a": 0,
+      "e": "Models optimise for <b>plausible-sounding</b> text, not truth, so they can produce convincing errors.",
+      "lo": [
+        "LS.P5.1"
+      ]
+    },
+    {
+      "q": "In “The cup fell off the table and it broke,” a transformer works out that “it” = the cup by…",
+      "tag": "genai",
+      "o": [
+        "using attention to weigh the other words",
+        "counting the letters",
+        "raising its temperature",
+        "translating the sentence"
+      ],
+      "a": 0,
+      "e": "<b>Attention</b> lets the model weigh which other words matter when resolving a word.",
+      "lo": [
+        "LS.P3.3"
+      ]
+    },
+    {
+      "q": "An agent is asked for today's live exchange rate. At which step must it call a tool?",
+      "tag": "agent",
+      "o": [
+        "when it needs a fact it cannot know from training - to fetch the live rate",
+        "never; it should always guess",
+        "only at the very end, to format the text",
+        "only to translate the answer"
+      ],
+      "a": 0,
+      "e": "A <b>tool call</b> is needed exactly where the agent needs live/external information.",
+      "lo": [
+        "LS.P4.4"
+      ]
+    },
+    {
+      "q": "Compared with writing a clever prompt, <b>fine-tuning</b> a model means…",
+      "tag": "genai",
+      "o": [
+        "editing the prompt wording only",
+        "training it further on extra examples",
+        "restarting the model’s server",
+        "caching its previous responses"
+      ],
+      "a": 1,
+      "e": "<b>Fine-tuning</b> updates the model’s weights with new data; prompting only changes the input.",
+      "lo": [
+        "LS.P3.1"
+      ]
+    },
+    {
+      "q": "An <b>AI agent</b> typically works in a loop of…",
+      "tag": "agent",
+      "o": [
+        "send request → wait → return one single reply",
+        "encode → store → then forget the result",
+        "think → act (tool) → observe → repeat",
+        "compile → run → then exit the program"
+      ],
+      "a": 2,
+      "e": "Agents iterate: reason, take an action/tool call, read the result, and continue until the goal is met.",
+      "lo": [
+        "LS.P4.3"
+      ]
+    },
+    {
+      "q": "A single neuron computes <code>output = (w₁·x₁)+(w₂·x₂)+b</code>. With x₁=2, x₂=3, w₁=1, w₂=2, b=−1, the output is…",
+      "tag": "byhand",
+      "byhand": "(1×2) + (2×3) + (−1) = ?",
+      "o": [
+        "6",
+        "7",
+        "8",
+        "11"
+      ],
+      "a": 1,
+      "e": "2 + 6 − 1 = <b>7</b>. This weighted sum + bias is the core operation inside every neural network.",
+      "lo": [
+        "LS.P2.1"
+      ]
+    },
+    {
+      "q": "A realistic AI-generated video of a real person saying things they never said is a deepfake. A technical defence against this is…",
+      "tag": "ethics",
+      "o": [
+        "raising the video resolution",
+        "compressing the file further",
+        "adding background music",
+        "content provenance / watermarking"
+      ],
+      "a": 3,
+      "e": "<b>Provenance and watermarking</b> help prove whether media is authentic or AI-generated.",
+      "lo": [
+        "LS.P5.2",
+        "LS.P5.3"
+      ]
+    },
+    {
+      "q": "A model scores 99% on its training data but fails on new data. This is…",
+      "tag": "fp",
+      "o": [
+        "underfitting",
+        "overfitting",
+        "reinforcement learning",
+        "tokenisation"
+      ],
+      "a": 1,
+      "e": "<b>Overfitting</b> means the model memorised the training set instead of learning general patterns.",
+      "lo": [
+        "LS.P2.3",
+        "LS.P2.4"
+      ]
+    },
+    {
+      "q": "An automatic moderation AI wrongly removes a harmless post (a false positive). The best response is to…",
+      "tag": "ethics",
+      "o": [
+        "permanently ban the poster",
+        "delete all similar posts too",
+        "provide a human appeal process",
+        "lower the threshold to zero"
+      ],
+      "a": 2,
+      "e": "Automated systems make mistakes; a <b>human appeal route</b> protects people from unfair errors.",
+      "lo": [
+        "LS.P5.4"
+      ]
+    },
+    {
+      "q": "Most modern AI image generators are based on…",
+      "tag": "genai",
+      "o": [
+        "diffusion models",
+        "decision trees",
+        "hash tables",
+        "linear regression"
+      ],
+      "a": 0,
+      "e": "<b>Diffusion models</b> start from random noise and denoise step by step into an image.",
+      "lo": [
+        "LS.P3.4"
+      ]
+    },
+    {
+      "q": "Pasting a classmate’s private medical details into a public AI chatbot is risky mainly because…",
+      "tag": "ethics",
+      "o": [
+        "it slightly slows down the assistant’s overall response time",
+        "it noticeably raises the compute cost",
+        "it can confuse the model’s text tokenizer",
+        "it can expose personal data that is stored or leaked"
+      ],
+      "a": 3,
+      "e": "Sharing others’ <b>personal data (PII)</b> can violate privacy and may be retained by the service.",
+      "lo": [
+        "LS.P5.3"
+      ]
+    },
+    {
+      "q": "We test a model on data it never saw in training in order to…",
+      "tag": "fp",
+      "o": [
+        "make the whole training process run faster",
+        "shrink the final model’s size on disk",
+        "measure how it generalises",
+        "change the trained model’s output style"
+      ],
+      "a": 2,
+      "e": "A held-out <b>test set</b> measures real generalisation, not memorisation.",
+      "lo": [
+        "LS.P2.3"
+      ]
+    },
+    {
+      "q": "The biggest societal risk of cheap, high-quality generative AI text is…",
+      "tag": "ethics",
+      "o": [
+        "steadily rising electricity bills for everyday users",
+        "mass-produced misinformation",
+        "fewer available jobs for graphic designers",
+        "more crowded and noisy social media feeds"
+      ],
+      "a": 1,
+      "e": "Generative AI can mass-produce convincing <b>misinformation</b>, raising the need for verification and literacy.",
+      "lo": [
+        "LS.P5.2",
+        "LS.P5.3"
+      ]
+    },
+    {
+      "q": "Build a tiny bigram predictor from this training text: “we play, we win, we play, we sing”. After the word “we”, which word should it predict?",
+      "tag": "byhand",
+      "byhand": "we→play · we→win · we→play · we→sing … after “we” → ❓",
+      "o": [
+        "play (it followed “we” most often)",
+        "win",
+        "sing",
+        "we"
+      ],
+      "a": 0,
+      "e": "Count the pairs: “we”→play appears 2 times, “we”→win once and “we”→sing once. A bigram model predicts the <b>most frequent</b> next word - <b>play</b> (2 of 4). You just generated text the way a tiny language model does.",
+      "lo": [
+        "LS.P3.2"
+      ]
+    }
+  ],
+  "structured": [
+    {
+      "title": "Task 1 · Trace a Neuron and a Decision (First Principles)",
+      "tags": [
+        "byhand",
+        "genai"
+      ],
+      "marks": 20,
+      "scenario": "A tiny model decides whether to <b>recommend a video</b> to a user. It is a single neuron:<br>\n      <code>z = (w₁·x₁) + (w₂·x₂) + b</code>, then it applies a step activation: <b>recommend if z &gt; 0, else skip</b>.<br><i>(A <b>step activation</b> is just an on/off switch. First work out the score z. If z is bigger than 0, the neuron switches ON → recommend. If not, it stays OFF → skip. Nothing in between.)</i><br><br>\n      Features: x₁ = “matches user’s topic” (1 yes / 0 no), x₂ = “video length in minutes ÷ 10”.<br>\n      Weights: w₁ = 4, w₂ = −1, bias b = 1.",
+      "parts": [
+        "a) Compute z for Video P: x₁=1, x₂=2. Show working. Is it recommended?",
+        "b) Compute z for Video Q: x₁=0, x₂=0.5. Show working. Is it recommended?",
+        "c) In one or two sentences, explain what the <b>negative</b> weight w₂ tells us about how the model treats long videos.",
+        "d) Suggest one risk of recommending purely from such a score, and one improvement."
+      ],
+      "model": [
+        {
+          "pts": "a) 6 marks",
+          "text": "z = 4·1 + (−1)·2 + 1 = 4 − 2 + 1 = <b>3</b>. 3 &gt; 0 → <b>Recommend</b>. (4 for correct z, 2 for decision.)",
+          "rationale": "Checks accurate step-by-step evaluation of a weighted sum plus a threshold activation."
+        },
+        {
+          "pts": "b) 6 marks",
+          "text": "z = 4·0 + (−1)·0.5 + 1 = 0 − 0.5 + 1 = <b>0.5</b>. 0.5 &gt; 0 → <b>Recommend</b>. (4 for z, 2 for decision.)",
+          "rationale": "Confirms the learner handles a 0 feature and decimals correctly."
+        },
+        {
+          "pts": "c) 4 marks",
+          "text": "A negative w₂ means longer videos <b>lower</b> the score, so the model is biased toward shorter videos.",
+          "rationale": "Tests interpretation of weight sign - connecting maths to model behaviour."
+        },
+        {
+          "pts": "d) 4 marks",
+          "text": "Risk: it ignores quality/accuracy and can create filter bubbles or push only short content. Improvement: add more features, use human feedback, or include a diversity term.",
+          "rationale": "Links a simple model to real recommender-system harms and mitigation - early systems thinking."
+        }
+      ],
+      "totalNote": "Full marks: correct z and decisions (a,b), correct interpretation of the negative weight (c), and a sensible risk + improvement (d).",
+      "partLo": [
+        [
+          "LS.P2.1"
+        ],
+        [
+          "LS.P2.1"
+        ],
+        [
+          "LS.P2.1"
+        ],
+        [
+          "LS.P2.1",
+          "LS.P5.4"
+        ]
+      ]
+    },
+    {
+      "title": "Task 2 · Program a Generative-AI Study Agent (Practical)",
+      "tags": [
+        "agent",
+        "genai",
+        "code"
+      ],
+      "marks": 20,
+      "scenario": "You will design an <b>AI agent</b> that helps a student revise. The agent can call these tools:<br>\n      <code>search(query)</code> → returns notes · <code>quiz(topic)</code> → returns a practice question · <code>ask_LLM(prompt)</code> → returns generated text.<br>\n      Write your answer as <b>pseudocode</b> (Python-like is fine).",
+      "parts": [
+        "a) Write a function <code>revise(topic)</code> that: searches notes, asks the LLM to summarise them, then gives the student one quiz question. Use the tools above.",
+        "b) Add a loop so the agent keeps quizzing until the student answers 3 questions correctly. Track the count.",
+        "c) <b>Dilemma:</b> The student types “just tell me the exam answers.” Add a check in your code that refuses this and explains why, while still offering legitimate help. Briefly justify your design choice."
+      ],
+      "model": [
+        {
+          "pts": "a) 7 marks",
+          "text": "e.g.<br><pre>def revise(topic):\n    notes = search(topic)\n    summary = ask_LLM(\"Summarise: \" + notes)\n    print(summary)\n    print(quiz(topic))</pre>(Marks: calls search, ask_LLM, quiz in a sensible order with the topic passed through.)",
+          "rationale": "Rewards correct tool use and data flow - the essence of an agent orchestrating tools."
+        },
+        {
+          "pts": "b) 7 marks",
+          "text": "e.g.<br><pre>correct = 0\nwhile correct < 3:\n    q = quiz(topic)\n    ans = input(q)\n    if check(ans, q):\n        correct += 1</pre>(Marks: a loop, a counter, a correct stopping condition.)",
+          "rationale": "Tests control flow and state - moving from a single call to an iterative agent loop."
+        },
+        {
+          "pts": "c) 6 marks",
+          "text": "e.g.<br><pre>if \"exam answers\" in request:\n    return \"I can’t give graded-test answers - that’s cheating. Want practice questions or an explanation instead?\"</pre>Justification: the agent should refuse harmful/unethical requests and redirect to legitimate help.",
+          "rationale": "Embeds a guardrail in code and asks the student to justify it - practical ethics and the start of alignment thinking."
+        }
+      ],
+      "totalNote": "Full marks: working tool orchestration (a), a correct quiz loop with counter (b), and a coded refusal with justification (c).",
+      "partLo": [
+        [
+          "LS.P3.1",
+          "LS.P4.3"
+        ],
+        [
+          "LS.P4.3"
+        ],
+        [
+          "LS.P4.3"
+        ]
+      ]
+    },
+    {
+      "title": "Task 3 · The Deepfake Dilemma (Theory + Ethics)",
+      "tags": [
+        "ethics",
+        "genai"
+      ],
+      "marks": 20,
+      "scenario": "A student newspaper receives a shocking <b>AI-generated video</b> appearing to show the school principal admitting to cheating in a competition. It could go viral before tomorrow’s big match. The editor must decide what to do tonight.",
+      "parts": [
+        "a) Identify three things that could go wrong if the paper publishes the video without checking.",
+        "b) Describe two practical methods the team could use to check whether the video is real.",
+        "c) The student who supplied the video says, “Even if it’s fake, it makes people talk about cheating, which is a good cause.” Evaluate this argument - is a good cause a valid reason to publish a possible deepfake? Argue your position.",
+        "d) State one school-wide policy you would recommend for handling AI-generated media, with a reason."
+      ],
+      "model": [
+        {
+          "pts": "a) 5 marks",
+          "text": "Any three: defaming an innocent person; spreading misinformation; legal/disciplinary trouble; eroding trust in the paper; causing real harm before the truth emerges. (≈2 each, cap 5.)",
+          "rationale": "Checks the student can foresee concrete harms of unverified generative media."
+        },
+        {
+          "pts": "b) 5 marks",
+          "text": "Any two: check provenance/metadata or watermarks; look for visual/audio artefacts; seek the original source; ask the principal directly; use a detection tool; corroborate with other evidence. (≈2–3 each.)",
+          "rationale": "Rewards practical media-verification literacy rather than vague ‘ask someone’."
+        },
+        {
+          "pts": "c) 6 marks",
+          "text": "A strong answer argues that ends do not justify spreading falsehood: publishing a likely fake harms a real person, deceives readers, and damages credibility - the ‘good cause’ can be pursued honestly instead. Credit is given for a clear position supported by reasons; acknowledging the counter-view strengthens it.",
+          "rationale": "This is the central dilemma. Marks reward reasoned ethical argument and engaging the opposing view, not a ‘correct’ slogan."
+        },
+        {
+          "pts": "d) 4 marks",
+          "text": "e.g., ‘verify-before-publish with a second source and a label for any AI-generated content,’ with a reason such as protecting people and reader trust.",
+          "rationale": "Moves from judgement to governance - designing a rule that prevents the harm."
+        }
+      ],
+      "totalNote": "Full marks: foreseeable harms (a), real verification methods (b), a reasoned stance on the dilemma engaging the counter-argument (c), and a justified policy (d).",
+      "partLo": [
+        [
+          "LS.P5.2"
+        ],
+        [
+          "LS.P5.2"
+        ],
+        [
+          "LS.P5.2"
+        ],
+        [
+          "LS.P5.2"
+        ]
+      ]
+    }
+  ]
+}
