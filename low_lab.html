@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robo's Lower Primary AI Practice Lab (Grades 1–3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FBF1E6;
+    --ink: #2B2118;
+    --ink-soft: #6B5F53;
+    --card: #FFFFFF;
+    --border-color: #F0E4D6;
+    
+    /* 5 Pillar Colors */
+    --p1: #FF6657; --p1-soft: #FFE3DE;
+    --p2: #FF9F1C; --p2-soft: #FFEBD1;
+    --p3: #12B3A6; --p3-soft: #D9F5F1;
+    --p4: #7C5CFC; --p4-soft: #E9E2FF;
+    --p5: #FF4F93; --p5-soft: #FFE0EC;
+    
+    --good: #1E9E5A; --good-soft: #E1F7EA;
+    --bad: #E0435C; --bad-soft: #FDE6EA;
+    --radius: 20px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 70px;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Baloo 2', sans-serif; }
+  .mono { font-family: 'Space Mono', monospace; }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 20px 18px 0;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 2px 20px;
+    border-bottom: 2px dashed #E5D7C5;
+    margin-bottom: 24px;
+  }
+
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .bot { font-size: 34px; line-height: 1; cursor: pointer; transition: transform .2s ease; }
+  .bot:hover { transform: scale(1.15) rotate(8deg); }
+  .brand h1 { font-size: 23px; line-height: 1.1; }
+  .brand p { margin: 2px 0 0; font-size: 13.5px; color: var(--ink-soft); font-weight: 700; }
+
+  .score-pill {
+    background: var(--card);
+    border: 2px solid var(--border-color);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    box-shadow: 0 4px 0 rgba(43,33,24,0.04);
+  }
+  .score-pill span { color: #E8920C; font-size: 17px; }
+
+  .path-line {
+    height: 3px;
+    background-image: linear-gradient(to right, #D8C9B4 40%, rgba(255,255,255,0) 0%);
+    background-size: 14px 3px;
+    background-repeat: repeat-x;
+    margin: 0 auto 26px;
+    max-width: 820px;
+    opacity: .75;
+  }
+
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .pillar-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    border: 2.5px solid transparent;
+    cursor: pointer;
+    text-align: left;
+    box-shadow: 0 6px 0 rgba(43,33,24,0.06);
+    transition: transform .18s ease, box-shadow .18s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 0 rgba(43,33,24,0.08);
+  }
+
+  .pillar-card .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .pillar-card .num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #fff;
+    font-family: 'Baloo 2', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .pillar-card .emoji-badge { font-size: 26px; }
+
+  .pillar-card h3 { font-size: 20px; margin-bottom: 4px; }
+  .pillar-card p.tag {
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    margin: 0 0 16px;
+    font-weight: 600;
+    line-height: 1.45;
+    min-height: 38px;
+  }
+
+  .dots { display: flex; gap: 7px; }
+  .dots span { width: 10px; height: 10px; border-radius: 50%; background: #EDE2D2; }
+  .dots span.done { background: var(--dot-color, #333); }
+
+  #pillarView { display: none; }
+  .back-btn {
+    background: none;
+    border: none;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    padding: 6px 0;
+    margin-bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .back-btn:hover { color: var(--ink); }
+
+  .pillar-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .pillar-head .num {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: #fff;
+    font-family: 'Baloo 2', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 20px;
+    flex: none;
+    background: var(--accent);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .pillar-head h2 { font-size: 26px; line-height: 1.1; }
+  .pillar-head p { color: var(--ink-soft); font-weight: 600; font-size: 14px; margin-top: 3px; }
+
+  .level-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .level-tab {
+    flex: 1 1 140px;
+    background: var(--card);
+    border: 2.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 10px 16px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    position: relative;
+    transition: all .15s ease;
+  }
+  .level-tab .lv-sub { font-size: 11px; color: var(--ink-soft); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+  .level-tab .lv-name { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: space-between; }
+  .level-tab.active { border-color: var(--accent); background: var(--accent-soft); }
+  .level-tab .check { color: var(--good); font-weight: 800; font-size: 16px; }
+
+  .exercise-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 26px 24px;
+    border: 2px solid var(--border-color);
+    margin-bottom: 18px;
+    box-shadow: 0 4px 0 rgba(43,33,24,0.04);
+  }
+  .exercise-card .kicker {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: .04em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .exercise-card h3 { font-size: 21px; line-height: 1.35; margin-bottom: 12px; }
+  .exercise-card .prompt-note { font-size: 15px; color: var(--ink-soft); font-weight: 600; margin-bottom: 18px; }
+
+  .tray {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px;
+    background: #FAF6EF;
+    border: 2px dashed #E3D7C4;
+    border-radius: 16px;
+    margin-bottom: 18px;
+    min-height: 64px;
+  }
+  .chip {
+    background: #fff;
+    border: 2px solid #E3D7C4;
+    border-radius: 12px;
+    padding: 9px 15px;
+    font-weight: 700;
+    cursor: grab;
+    font-size: 14.5px;
+    user-select: none;
+    transition: all .15s ease;
+  }
+  .chip.selected { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .chip.correct { border-color: var(--good); background: var(--good-soft); color: #136B3E; }
+  .chip.incorrect { border-color: var(--bad); background: var(--bad-soft); color: #9C2438; }
+  .chip:active { cursor: grabbing; }
+
+  .bins {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .bin {
+    border: 2px solid #E3D7C4;
+    border-radius: 16px;
+    padding: 14px;
+    min-height: 120px;
+    background: #FAF6EF;
+    transition: border-color .15s, background .15s;
+  }
+  .bin.dragover { border-color: var(--accent); background: var(--accent-soft); }
+  .bin h4 { font-family: 'Baloo 2', sans-serif; font-size: 15px; margin-bottom: 10px; }
+  .bin .bin-slot { display: flex; flex-wrap: wrap; gap: 8px; min-height: 40px; }
+
+  .painter-wrap { text-align: center; margin: 10px 0 16px; }
+  .painter {
+    display: inline-grid;
+    gap: 6px;
+    padding: 12px;
+    background: #FAF6EF;
+    border-radius: 16px;
+    border: 2px solid #E3D7C4;
+  }
+  .painter .cell {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: #fff;
+    border: 2px solid #E3D7C4;
+    cursor: pointer;
+    transition: background .12s, transform .1s;
+  }
+  .painter .cell:active { transform: scale(0.92); }
+  .painter .cell.on { background: var(--accent); border-color: var(--accent); }
+  .code-row {
+    font-family: 'Space Mono', monospace;
+    letter-spacing: .12em;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    background: #FAF6EF;
+    border: 2px dashed #E3D7C4;
+    padding: 8px 14px;
+    border-radius: 10px;
+    word-break: break-all;
+    text-align: center;
+  }
+
+  .maze-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .maze-grid {
+    display: inline-grid;
+    gap: 5px;
+    background: #2B2118;
+    padding: 10px;
+    border-radius: 16px;
+  }
+  .maze-cell {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    user-select: none;
+  }
+  .maze-cell.wall { background: #47382B; }
+  .maze-cell.open { background: #FAF6EF; }
+  .maze-cell.goal { background: var(--good-soft); }
+  
+  .maze-controls {
+    display: grid;
+    grid-template-columns: 54px 54px 54px;
+    grid-template-rows: 54px 54px;
+    gap: 8px;
+    justify-content: center;
+  }
+  .maze-btn {
+    background: var(--card);
+    border: 2px solid #E3D7C4;
+    border-radius: 14px;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .1s, background .15s;
+    user-select: none;
+  }
+  .maze-btn:active { transform: scale(0.92); background: #FAF6EF; }
+  .maze-msg { font-weight: 700; font-size: 14px; min-height: 22px; text-align: center; color: var(--ink); }
+
+  .reorder-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+  .reorder-item {
+    background: #fff;
+    border: 2px solid #E3D7C4;
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-weight: 700;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    user-select: none;
+  }
+  .reorder-item.selected { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .reorder-item.correct { border-color: var(--good); background: var(--good-soft); }
+  .reorder-item.incorrect { border-color: var(--bad); background: var(--bad-soft); }
+  .reorder-item .handle { color: var(--ink-soft); font-size: 18px; }
+
+  .field-row { margin-bottom: 14px; }
+  .field-row label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px; color: var(--ink-soft); }
+  .field-row input, .field-row textarea {
+    width: 100%;
+    border: 2px solid #E3D7C4;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    background: #FAF6EF;
+  }
+  .field-row input:focus, .field-row textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+  }
+  textarea { min-height: 75px; resize: vertical; }
+
+  .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+  .option {
+    text-align: left;
+    background: #fff;
+    border: 2px solid #E3D7C4;
+    border-radius: 14px;
+    padding: 13px 18px;
+    font-weight: 700;
+    font-size: 14.5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: all .15s ease;
+  }
+  .option:hover { border-color: var(--accent); background: #FFFDF9; }
+  .option.correct { border-color: var(--good); background: var(--good-soft); }
+  .option.incorrect { border-color: var(--bad); background: var(--bad-soft); }
+  .option .mark { font-weight: 800; font-size: 16px; }
+
+  .btn {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    border-radius: 12px;
+    padding: 11px 22px;
+    cursor: pointer;
+    color: #fff;
+    background: var(--accent);
+    box-shadow: 0 3px 0 rgba(0,0,0,0.1);
+    transition: transform .12s ease, opacity .12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); opacity: .95; }
+  .btn.secondary { background: #fff; color: var(--ink); border: 2px solid #E3D7C4; box-shadow: none; }
+  .btn.secondary:hover { border-color: var(--ink-soft); }
+  .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+
+  .feedback {
+    margin-top: 18px;
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.6;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.good { background: var(--good-soft); color: #136B3E; border-left: 6px solid var(--good); }
+  .feedback.bad { background: var(--bad-soft); color: #9C2438; border-left: 6px solid var(--bad); }
+  .feedback b { font-weight: 800; }
+
+  .reflect-box { margin-top: 20px; padding-top: 16px; border-top: 2px dashed #E3D7C4; }
+  .reflect-box p.q { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+  .model-answer {
+    display: none;
+    margin-top: 12px;
+    background: #FAF3E6;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 13px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .model-answer.show { display: block; }
+
+  @media (max-width: 520px) {
+    .wrap { padding: 14px 14px 0; }
+    .exercise-card { padding: 20px 16px; }
+    .maze-cell { width: 40px; height: 40px; font-size: 18px; }
+    .painter .cell { width: 30px; height: 30px; }
+    .bins { grid-template-columns: 1fr; }
+  }
+    /* Container Header Navigation */
+  .lab-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: #FFFFFF;
+    border-bottom: 2px solid #F0E4D6;
+    margin-bottom: 16px;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 4px 12px rgba(43, 33, 24, 0.04);
+  }
+
+  /* Button Biasa untuk Kembali ke Halaman Utama */
+  .back-home-btn {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    background: #FAF6EF;
+    border: 2px solid #E3D7C4;
+    padding: 6px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .back-home-btn:hover {
+    background: var(--p2-soft);
+    border-color: var(--p2);
+    color: #B86B00;
+    transform: translateX(-3px);
+  }
+
+  .back-home-btn:active {
+    transform: scale(0.96);
+  }
+
+  /* Badge Penanda Level */
+  .lab-badge-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    background: #FFEBD1;
+    color: #B86B00;
+    padding: 4px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- Header Navigation Bar untuk Kembali ke Utama -->
+  <div class="lab-nav-header">
+    <button class="back-home-btn" onclick="window.location.href='index.html'">
+      ← Back to Main Syllabus
+    </button>
+    <div class="lab-badge-tag">Lower Primary Lab (Grades 1–3)</div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="bot" onclick="pokeBot()" title="Click me to say hello!">🤖</div>
+      <div>
+        <h1>Lower Primary Lab</h1>
+        <p>Grades 1–3 · Five AI Pillars · 15 Interactive Quests</p>
+      </div>
+    </div>
+    <div class="score-pill">⭐ <span id="scoreCount">0</span>/15 Solved</div>
+  </div>
+
+  <!-- HOME VIEW (Grid of 5 Pillars) -->
+  <div id="homeView">
+    <div class="path-line"></div>
+    <div class="pillar-grid" id="pillarGrid"></div>
+  </div>
+
+  <!-- PILLAR VIEW (Tabs + Active Interactive Challenge) -->
+  <div id="pillarView">
+    <button class="back-btn" onclick="goHome()">← Back to All Pillars</button>
+    <div class="pillar-head">
+      <div class="num" id="pvNum">1</div>
+      <div>
+        <h2 id="pvTitle">Pillar Title</h2>
+        <p id="pvTag">Pillar Subtitle</p>
+      </div>
+    </div>
+    <div class="level-tabs" id="levelTabs"></div>
+    <div class="exercise-card" id="exerciseCard"></div>
+  </div>
+
+</div>
+
+<script>
+/* =========================================================================
+   CURRICULUM DATA: LOWER PRIMARY (GRADES 1–3)
+   - Pillar 1 (Representation): Feature grouping, Pixel art numbers, Letter cipher
+   - Pillar 2 (Learning): Rules vs Learning, Maze search trial-and-error, Magic pattern box
+   - Pillar 3 (Generation): AI-Made vs Found, Next-Word predictor, Why 6 fingers happen
+   - Pillar 4 (Agency): Sense-Think-Act loop, Clear prompts, Kindness reading dilemma
+   - Pillar 5 (Responsibility): Private vs Public, Living real dog vs Robot dog, Honest card
+   ========================================================================= */
+const PILLARS = [
+{
+  id: 'p1',
+  color: 'var(--p1)',
+  soft: 'var(--p1-soft)',
+  emoji: '🔎',
+  name: 'Representation',
+  tag: 'Numbers behind words and pictures · Grouping by features',
+  levels: [
+    {
+      label: 'Easy', sub: 'Warm-up', type: 'sort',
+      title: 'Sort the Toys by Features',
+      kicker: 'Pillar 1.2 · Feature Sorting',
+      prompt: 'Robo is learning to organize a toy room! Computers group items by looking at special features. Drag each toy into the correct bin based on whether it has <b>wheels</b> or <b>no wheels</b>.',
+      bins: [
+        { id: 'wheels', label: 'Has Wheels 🚗' },
+        { id: 'nowheels', label: 'No Wheels 🧸' }
+      ],
+      items: [
+        { id: 'i1', text: '🚗 Toy Racecar', bin: 'wheels', hint: 'Look at the racecar — it rolls on wheels!' },
+        { id: 'i2', text: '🛹 Skateboard', bin: 'wheels', hint: 'A skateboard has 4 little wheels.' },
+        { id: 'i3', text: '🧸 Teddy Bear', bin: 'nowheels', hint: 'A cuddly teddy bear has soft paws, not wheels.' },
+        { id: 'i4', text: '🚲 Bicycle', bin: 'wheels', hint: 'A bicycle rides on two big wheels!' },
+        { id: 'i5', text: '🧱 Building Block', bin: 'nowheels', hint: 'Blocks have flat sides and no wheels.' },
+        { id: 'i6', text: '⚽ Soccer Ball', bin: 'nowheels', hint: 'A ball is round, but it rolls on its own body without wheels.' }
+      ],
+      why: '<b>Why:</b> You just taught Robo to look at a <b>feature</b> (wheels vs. no wheels)! Computers don\'t know what a toy is until we measure specific features like wheels, shape, or weight.',
+      reflection: {
+        prompt: 'What is another feature you could use to sort these same toys into two groups?',
+        model: 'You could sort them by "Soft plush vs. Hard plastic", or "Things you ride on vs. Things you hold"!'
+      }
+    },
+    {
+      label: 'Medium', sub: 'Level up', type: 'grid',
+      title: 'Pixel Art: Pictures are Secret Numbers',
+      kicker: 'Pillar 1.2 & 1.3 · Digital Pixels',
+      prompt: 'Computers do not have human eyes! Inside a computer, a picture is just a grid of numbers: <b>1</b> means shade a square with color, and <b>0</b> means leave it blank.<br><br>Tap the squares to match the target code and reveal Robo\'s secret icon!',
+      rows: 5, cols: 5,
+      code: [
+        0,1,0,1,0,
+        1,1,1,1,1,
+        1,1,1,1,1,
+        0,1,1,1,0,
+        0,0,1,0,0
+      ],
+      countField: { label: 'How many total squares did you color with ink (count the 1s)?', answer: 13 },
+      why: '<b>Why:</b> You revealed a heart icon using only <b>13 colored numbers</b>! Every single photograph on a phone or tablet is stored as millions of tiny numbered pixels just like this.'
+    },
+    {
+      label: 'Hard', sub: 'Challenge', type: 'type',
+      title: 'The Secret Number Cipher',
+      kicker: 'Pillar 1.3 · Letters to Numbers',
+      prompt: 'A chatbot never sees human alphabet letters — it turns letters into numbers using a code sheet:<br><span class="mono" style="font-size:16px;">A=1, B=2, C=3, D=4, E=5, F=6 …</span><br><br>Robo received the secret code: <b>[2 – 5 – 5]</b>.<br>Which secret word did Robo receive?',
+      fields: [{ id: 'f1', type: 'text', placeholder: 'Type the 3-letter word...', answers: ['bee'] }],
+      hintWrong: 'Use the code sheet: 2 = B, 5 = E, 5 = E. Put them together!',
+      why: '<b>Why:</b> 2 = B, 5 = E, 5 = E spells <b>BEE 🐝</b>! Computers turn every single letter, word, and punctuation mark into numbers so they can calculate with them.',
+      reflection: {
+        prompt: 'Why do computers turn letters and pictures into numbers?',
+        model: 'Because computer microchips are made of electrical switches that can only calculate with numbers, so everything must be translated into numbers first!'
+      }
+    }
+  ]
+},
+{
+  id: 'p2',
+  color: 'var(--p2)',
+  soft: 'var(--p2-soft)',
+  emoji: '🧠',
+  name: 'Learning',
+  tag: 'Rules vs. learning from data · Mazes and pattern discovery',
+  levels: [
+    {
+      label: 'Easy', sub: 'Warm-up', type: 'sort',
+      title: 'Fixed Rule or Learned from Examples?',
+      kicker: 'Pillar 2.1 · Rules vs. Machine Learning',
+      prompt: 'Some computer tools follow strict human rules written by a programmer, while machine learning discovers patterns from lots of examples. Sort each system!',
+      bins: [
+        { id: 'rule', label: 'Fixed Human Rule 📜' },
+        { id: 'learned', label: 'Learned from Examples 🤖' }
+      ],
+      items: [
+        { id: 'i1', text: 'Pocket calculator adding 5 + 4 = 9', bin: 'rule', hint: 'Calculators follow fixed math steps programmed by engineers.' },
+        { id: 'i2', text: 'A cooking recipe timer counting down 10 minutes', bin: 'rule', hint: 'A digital timer runs a simple clock counting rule.' },
+        { id: 'i3', text: 'Robo learning to spot cats after looking at 200 cat photos', bin: 'learned', hint: 'Robo learns the pattern from photo examples!' },
+        { id: 'i4', text: 'A smart tablet learning to recognize your face from camera pictures', bin: 'learned', hint: 'Face unlock trains on photos of your face.' }
+      ],
+      why: '<b>Why:</b> Calculators run fixed human rules that never change. Machine learning trains by looking at hundreds of example pictures or words to find the pattern!'
+    },
+    {
+      label: 'Medium', sub: 'Level up', type: 'maze',
+      title: 'Guide Robo: Trial and Error Search',
+      kicker: 'Pillar 2.4 · Reinforcement Search',
+      prompt: 'Robo is learning to find the prize flag 🏁! There is a dead end in this maze. If you hit a dead end, <b>back up and try a new turn</b> — that is how computers search by trial and error!',
+      grid: [
+        [0,0,0,3,0],
+        [0,1,0,1,0],
+        [0,1,1,1,0],
+        [2,1,0,0,0]
+      ],
+      why: '<b>Why:</b> Backing up from a dead end and choosing a different path is how smart AI navigates! This trial-and-error method is the foundation of <b>search algorithms</b>.'
+    },
+    {
+      label: 'Hard', sub: 'Challenge', type: 'mcq',
+      title: 'The Growing Magic Pattern Box',
+      kicker: 'Pillar 2.1 & 2.2 · Inferring Rules',
+      prompt: 'A secret machine always follows <b>one hidden rule</b> from nature:<br>• 🐛 Caterpillar $\\rightarrow$ 🦋 Butterfly<br>• 🌰 Acorn $\\rightarrow$ 🌳 Tall Oak Tree<br><br>Work out the hidden rule, then predict what the machine turns an <b>🥚 Egg</b> into!',
+      options: [
+        { text: '🐣 A fluffy baby chick', correct: true, feedback: 'Spot on! The hidden rule is "what it grows into in nature". An egg hatches into a chick!' },
+        { text: '🥚 Another identical egg', correct: false, feedback: 'The examples show living things transforming as they grow, not staying the same.' },
+        { text: '🍳 A fried cooking pan', correct: false, feedback: 'The pattern is about living growth in nature, not cooking breakfast!' },
+        { text: '🐛 A caterpillar', correct: false, feedback: 'Caterpillars come from eggs too, but the first example already grew a caterpillar into a butterfly!' }
+      ],
+      why: '<b>Why:</b> You figured out the hidden rule ("what it grows into") from just two examples and applied it to an egg! Figuring out rules from examples and using them on new things is the core idea of <b>machine learning</b>.',
+      reflection: {
+        prompt: 'What mistake would an AI make if you trained it ONLY on photos of red apples, and then showed it a green apple?',
+        model: 'It might say "That is not an apple!" because it falsely learned that all apples must be red.'
+      }
+    }
+  ]
+},
+{
+  id: 'p3',
+  color: 'var(--p3)',
+  soft: 'var(--p3-soft)',
+  emoji: '✨',
+  name: 'Generation',
+  tag: 'Creating new text and pictures · Next-word predictions',
+  levels: [
+    {
+      label: 'Easy', sub: 'Warm-up', type: 'sort',
+      title: 'Brand-New AI Creation or Found Online?',
+      kicker: 'Pillar 3.1 · Generation vs. Search',
+      prompt: 'Generative AI invents brand-new things out of thin air from your words. Search engines only find things that already existed. Sort each item!',
+      bins: [
+        { id: 'created', label: 'Created Brand-New ✨' },
+        { id: 'found', label: 'Found (Already Existed) 🔍' }
+      ],
+      items: [
+        { id: 'i1', text: 'A brand-new funny bedtime story about a space hamster', bin: 'created', hint: 'Nobody has ever read this story before — an AI made it up!' },
+        { id: 'i2', text: 'A digital picture of a purple dragon riding a bicycle', bin: 'created', hint: 'This fantasy picture was drawn from scratch by an AI.' },
+        { id: 'i3', text: 'Looking up the school phone number on the official website', bin: 'found', hint: 'The phone number already existed on the webpage — it was found!' },
+        { id: 'i4', text: 'A real photograph of a kangaroo taken at the zoo', bin: 'found', hint: 'The kangaroo photo was taken in real life with a camera.' }
+      ],
+      why: '<b>Why:</b> Generative AI synthesizes <b>brand-new words and pictures</b> from your request. Search engines look up real information that someone already created.'
+    },
+    {
+      label: 'Medium', sub: 'Level up', type: 'type',
+      title: 'The Next-Word Prediction Game',
+      kicker: 'Pillar 3.2 · Next-Word Guessing',
+      prompt: 'Chatbots do not have human brains. They build sentences by predicting which word makes the most sense next! Complete this sentence:<br><br><b>“The hungry kitten drank a warm saucer of ___.”</b>',
+      fields: [{ id: 'f1', type: 'text', placeholder: 'Type the most likely word...', answers: ['milk', 'water'] }],
+      hintWrong: 'Think about what kittens love to drink from a saucer!',
+      why: '<b>Why:</b> "Milk" has the highest statistical probability! Large language models predict likely next words one by one based on all the storybooks they have read.'
+    },
+    {
+      label: 'Hard', sub: 'Challenge', type: 'mcq',
+      title: 'Why Did the AI Draw 6 Fingers?',
+      kicker: 'Pillar 3.1 · Generative Artifacts',
+      prompt: 'An AI image generator creates a picture of a smiling astronaut waving, but its hand accidentally has <b>6 fingers</b>! Why did the computer make this silly mistake?',
+      options: [
+        { text: 'It blends visual pixel patterns and does not know human anatomy or count bones', correct: true, feedback: 'Bingo! AI generates pixel textures that look like hands, but it doesn\'t truly understand what a human skeleton is!' },
+        { text: 'The astronaut in real life actually has 6 fingers', correct: false, feedback: 'Real astronauts have normal 5-fingered hands!' },
+        { text: 'The computer keyboard accidentally pressed the number 6', correct: false, feedback: 'Keyboard keys do not draw extra fingers on digital images.' },
+        { text: 'The computer monitor ran out of green pixels', correct: false, feedback: 'Screen pixels have nothing to do with hand shape calculations.' }
+      ],
+      why: '<b>Why:</b> Image generators don\'t count fingers or understand 3D human anatomy; they blend statistical patterns of pixels. That\'s why AI drawings can sometimes have extra fingers or strange teeth!',
+      reflection: {
+        prompt: 'Can generative AI create a real, warm slice of cheese pizza for you to eat?',
+        model: 'No! Generative AI can only create digital pictures, words, or sounds on a screen — it cannot make physical food or living objects!'
+      }
+    }
+  ]
+},
+{
+  id: 'p4',
+  color: 'var(--p4)',
+  soft: 'var(--p4-soft)',
+  emoji: '🤖',
+  name: 'Interaction & Agency',
+  tag: 'The Sense-Think-Act loop · Clear prompts and kind robot helpers',
+  levels: [
+    {
+      label: 'Easy', sub: 'Warm-up', type: 'reorder',
+      title: 'Order the Robot Vacuum Loop',
+      kicker: 'Pillar 4.2 · Sense $\\rightarrow$ Think $\\rightarrow$ Act',
+      prompt: 'A smart cleaning robot cleans a messy classroom floor autonomously. Drag these three steps into the correct order in the loop!',
+      items: [
+        { id: 'act', text: '3. ACT: Wheel motors turn the robot 45° to the left away from the shoe' },
+        { id: 'sense', text: '1. SENSE: Camera and bump sensor spot a sneaker on the rug' },
+        { id: 'think', text: '2. THINK: Computer chip calculates an open path around the shoe' }
+      ],
+      correctOrder: ['sense', 'think', 'act'],
+      why: '<b>Why:</b> Every AI agent follows the loop: <b>SENSE</b> first (gather inputs with eyes/sensors) $\\rightarrow$ <b>THINK</b> (decide with a microchip) $\\rightarrow$ <b>ACT</b> (move physical motors)!'
+    },
+    {
+      label: 'Medium', sub: 'Level up', type: 'mcq',
+      title: 'Fix the Super-Vague Question',
+      kicker: 'Pillar 4.1 · Clear Prompting',
+      prompt: 'Mia tells a chatbot: <i>“Hey computer, do the thing with the animal!”</i> The chatbot is totally confused. Which is the BEST, clearest prompt for Mia to use instead?',
+      options: [
+        { text: '“Do the animal thing right now please please please!”', correct: false, feedback: 'Still vague! Being polite is nice, but it still doesn\'t tell the computer what to do.' },
+        { text: '“ANIMAL! ANIMAL! ANIMAL!”', correct: false, feedback: 'Shouting in capital letters gives no clear instructions.' },
+        { text: '“Write a 3-line happy poem about a playful baby dolphin.”', correct: true, feedback: 'Awesome! It names the exact animal (dolphin), the format (3-line poem), and the mood (happy).' },
+        { text: '“Cat.”', correct: false, feedback: 'Just one word doesn\'t say what you want the AI to make.' }
+      ],
+      why: '<b>Why:</b> Vague prompts get confused answers. A high-quality prompt clearly states the <b>topic</b> (dolphin), the <b>task</b> (poem), and the <b>limit</b> (3 lines)!'
+    },
+    {
+      label: 'Hard', sub: 'Challenge', type: 'mcq',
+      title: 'The Reading Corner Dilemma',
+      kicker: 'Pillar 4.3 & 5.3 · Kind Fallbacks',
+      prompt: 'A tidy robot is told to shelve books. It finds an open storybook lying face down on a beanbag. A child was just reading it and went to wash their hands. What is the kindest, safest thing for the robot to do?',
+      options: [
+        { text: 'Slam the book shut and bury it at the bottom of the toy box', correct: false, feedback: 'The student would lose their page and search everywhere for their book!' },
+        { text: 'Pause, save the page with a bookmark, or ask a student/teacher before putting it away', correct: true, feedback: 'Wonderful! When an AI is uncertain, pausing and asking a human prevents mistakes.' },
+        { text: 'Throw the book into the paper recycling bin', correct: false, feedback: 'Books are treasured school property, not trash!' },
+        { text: 'Turn off its power and never move again', correct: false, feedback: 'Shutting off forever means the robot stops helping.' }
+      ],
+      why: '<b>Why:</b> Automated robots don\'t have human empathy or context. Good AI safety design requires robots to <b>pause and ask</b> when unsure, rather than making an irreversible mistake!',
+      reflection: {
+        prompt: 'Why should classroom robots always have a human teacher or student to check their work?',
+        model: 'Because machines only follow simple programmed rules without human feelings or understanding, so human oversight keeps everyone safe and fair!'
+      }
+    }
+  ]
+},
+{
+  id: 'p5',
+  color: 'var(--p5)',
+  soft: 'var(--p5-soft)',
+  emoji: '🛡️',
+  name: 'Responsibility',
+  tag: 'Keeping private data safe · Real dogs vs. robots · Honesty',
+  levels: [
+    {
+      label: 'Easy', sub: 'Warm-up', type: 'sort',
+      title: 'Keep It Private or OK to Share?',
+      kicker: 'Pillar 5.1 · Personal Privacy',
+      prompt: 'Some information is private and must never be entered into chatbots or public websites. Other fun facts are safe to share. Sort each card!',
+      bins: [
+        { id: 'private', label: 'Keep Private 🔒' },
+        { id: 'share', label: 'OK to Share 📢' }
+      ],
+      items: [
+        { id: 'i1', text: '🏠 Your home street and house number', bin: 'private', hint: 'A stranger could use your address to find you in real life.' },
+        { id: 'i2', text: '🔑 Your secret tablet password', bin: 'private', hint: 'Passwords protect your private accounts — keep them secret!' },
+        { id: 'i3', text: '📱 Your parent\'s telephone number', bin: 'private', hint: 'Phone numbers can be used to call or message your family.' },
+        { id: 'i4', text: '🎨 Your favorite color (like Blue or Yellow)', bin: 'share', hint: 'Everyone can talk about their favorite color safely!' },
+        { id: 'i5', text: '🐶 Your favorite animal (like a puppy)', bin: 'share', hint: 'Liking puppies is a fun, safe fact to share.' },
+        { id: 'i6', text: '🎮 Your favorite recess playground game', bin: 'share', hint: 'Playing tag or hide-and-seek is fun and safe to talk about.' }
+      ],
+      why: '<b>Why:</b> Details that can identify, contact, or locate you (passwords, address, phone numbers) must stay <b>private</b>. Fun preferences (colors, animals, games) are totally safe to share!'
+    },
+    {
+      label: 'Medium', sub: 'Level up', type: 'mcq',
+      title: 'Alive or Not Alive? The Robot Puppy',
+      kicker: 'Pillar 1.1 · Living vs. Machines',
+      prompt: 'A toy robot dog wags its tail, barks on a speaker, and types “I love you!” on a tablet screen. Is this robot puppy truly alive with real feelings?',
+      options: [
+        { text: 'Yes, because it can move its tail and make cute sounds', correct: false, feedback: 'Moving parts don\'t make something alive — a clock has moving hands too!' },
+        { text: 'No, it is a machine made of plastic, wires, and code — it has no feelings or heart', correct: true, feedback: 'Exactly right! Machines follow computer code. Only real living animals have feelings.' },
+        { text: 'Yes, but only when its battery is plugged into the wall', correct: false, feedback: 'Electricity gives power to motors, but it doesn\'t create a living soul.' },
+        { text: 'Only if you give it a real dog biscuit to eat', correct: false, feedback: 'Toy robots cannot digest food!' }
+      ],
+      why: '<b>Why:</b> Even if a robot looks cute and acts friendly, it is made of metal, plastic, and code. Only real living creatures can truly feel happy, sad, or loved!'
+    },
+    {
+      label: 'Hard', sub: 'Challenge', type: 'mcq',
+      title: 'The Birthday Card: Being Honest',
+      kicker: 'Pillar 5.3 · Academic Honesty & Credit',
+      prompt: 'Leo used an AI drawing tool to help make a get-well card for his teacher. When his teacher smiles and asks, <i>“Leo, how did you make this lovely picture?”</i>, what is the most honest, proud answer?',
+      options: [
+        { text: '“I painted every single dot by hand with my own paintbrush with zero help!”', correct: false, feedback: 'That is dishonest because an AI helped draw it.' },
+        { text: '“I came up with the idea and used an AI drawing tool to help create it!”', correct: true, feedback: 'Terrific! Leo is proud of his creative idea and completely honest about using the AI helper.' },
+        { text: '“A magical fairy flew through my window and drew it for me.”', correct: false, feedback: 'Making up fairy tales avoids telling the truth.' },
+        { text: '“I don\'t know where it came from, it just appeared.”', correct: false, feedback: 'Pretending not to know is not responsible.' }
+      ],
+      why: '<b>Why:</b> Honesty is a superpower! You can be proud of your imagination and ideas while honestly acknowledging that an AI computer tool helped you draw or write.',
+      reflection: {
+        prompt: 'If a chatbot tells you that dogs can fly and have 8 legs, what should you do before believing it?',
+        model: 'Check with a parent, a teacher, or a library encyclopedia, because chatbots can hallucinate and sound confident even when they are completely wrong!'
+      }
+    }
+  ]
+}
+];
+
+let completedLevels = new Set();
+let activePillarIdx = 0;
+let activeLevelIdx = 0;
+
+function renderHome() {
+  const grid = document.getElementById('pillarGrid');
+  grid.innerHTML = '';
+
+  PILLARS.forEach((p, pIdx) => {
+    const card = document.createElement('div');
+    card.className = 'pillar-card';
+    card.style.setProperty('--dot-color', p.color);
+    card.onclick = () => openPillar(pIdx);
+
+    let dotsHtml = '';
+    p.levels.forEach((_, lIdx) => {
+      const isDone = completedLevels.has(`${pIdx}-${lIdx}`);
+      dotsHtml += `<span class="${isDone ? 'done' : ''}"></span>`;
+    });
+
+    card.innerHTML = `
+      <div class="card-head">
+        <div class="num" style="background:${p.color}">${pIdx + 1}</div>
+        <div class="emoji-badge">${p.emoji}</div>
+      </div>
+      <h3>${p.name}</h3>
+      <p class="tag">${p.tag}</p>
+      <div class="dots">${dotsHtml}</div>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  updateScorePill();
+}
+
+function updateScorePill() {
+  document.getElementById('scoreCount').textContent = completedLevels.size;
+}
+
+function goHome() {
+  document.getElementById('pillarView').style.display = 'none';
+  document.getElementById('homeView').style.display = 'block';
+  renderHome();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openPillar(pIdx) {
+  activePillarIdx = pIdx;
+  activeLevelIdx = 0;
+
+  document.getElementById('homeView').style.display = 'none';
+  document.getElementById('pillarView').style.display = 'block';
+
+  const p = PILLARS[pIdx];
+  document.documentElement.style.setProperty('--accent', p.color);
+  document.documentElement.style.setProperty('--accent-soft', p.soft);
+
+  document.getElementById('pvNum').textContent = pIdx + 1;
+  document.getElementById('pvNum').style.background = p.color;
+  document.getElementById('pvTitle').textContent = `${p.emoji} Pillar ${pIdx + 1}: ${p.name}`;
+  document.getElementById('pvTag').textContent = p.tag;
+
+  renderLevelTabs();
+  renderActiveExercise();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderLevelTabs() {
+  const p = PILLARS[activePillarIdx];
+  const tabsWrap = document.getElementById('levelTabs');
+  tabsWrap.innerHTML = '';
+
+  p.levels.forEach((lv, lIdx) => {
+    const tab = document.createElement('div');
+    const isDone = completedLevels.has(`${activePillarIdx}-${lIdx}`);
+    tab.className = 'level-tab' + (lIdx === activeLevelIdx ? ' active' : '');
+    tab.onclick = () => {
+      activeLevelIdx = lIdx;
+      renderLevelTabs();
+      renderActiveExercise();
+    };
+
+    tab.innerHTML = `
+      <div class="lv-sub">${lv.sub}</div>
+      <div class="lv-name">
+        <span>${lv.label}</span>
+        ${isDone ? '<span class="check">✓</span>' : ''}
+      </div>
+    `;
+    tabsWrap.appendChild(tab);
+  });
+}
+
+function markActiveLevelComplete() {
+  completedLevels.add(`${activePillarIdx}-${activeLevelIdx}`);
+  updateScorePill();
+  renderLevelTabs();
+}
+
+function showFeedback(type, text) {
+  const fb = document.getElementById('feedback');
+  fb.className = `feedback show ${type}`;
+  fb.innerHTML = text;
+}
+
+function pokeBot() {
+  const phrases = [
+    "🤖 'Beep boop! Everything inside a computer turns into numbers!'",
+    "🐾 'Look for features like wheels or fur to group things!'",
+    "🧠 'When I make a mistake, I back up and try again!'",
+    "🔒 'Never share your home address with chatbots!'",
+    "✨ 'Generative AI makes brand-new pictures from your words!'"
+  ];
+  const msg = phrases[Math.floor(Math.random() * phrases.length)];
+  const botEl = document.querySelector('.bot');
+  botEl.style.transform = 'scale(1.3) rotate(-10deg)';
+  setTimeout(() => botEl.style.transform = 'none', 300);
+
+  const fb = document.getElementById('feedback');
+  if (fb && document.getElementById('pillarView').style.display === 'block') {
+    showFeedback('good', `<b>Robo says:</b> ${msg}`);
+  }
+}
+
+function renderActiveExercise() {
+  const p = PILLARS[activePillarIdx];
+  const lv = p.levels[activeLevelIdx];
+  const card = document.getElementById('exerciseCard');
+
+  card.innerHTML = `
+    <span class="kicker">${lv.kicker}</span>
+    <h3>${lv.title}</h3>
+    <p class="prompt-note">${lv.prompt}</p>
+    <div id="exerciseBody"></div>
+    <div class="btn-row" id="exerciseButtons"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="reflect-box" id="reflectBox" style="display:none"></div>
+  `;
+
+  const body = document.getElementById('exerciseBody');
+  const btns = document.getElementById('exerciseButtons');
+
+  if (lv.type === 'sort') renderSortExercise(lv, body, btns);
+  else if (lv.type === 'grid') renderGridExercise(lv, body, btns);
+  else if (lv.type === 'type') renderTypeExercise(lv, body, btns);
+  else if (lv.type === 'maze') renderMazeExercise(lv, body, btns);
+  else if (lv.type === 'reorder') renderReorderExercise(lv, body, btns);
+  else if (lv.type === 'mcq') renderMcqExercise(lv, body, btns);
+
+  if (lv.reflection) {
+    const rb = document.getElementById('reflectBox');
+    rb.style.display = 'block';
+    rb.innerHTML = `
+      <p class="q">💭 <b>Deeper Thinking:</b> ${lv.reflection.prompt}</p>
+      <div class="field-row">
+        <textarea placeholder="Type what you think here in your own words..."></textarea>
+      </div>
+      <button class="btn secondary" onclick="toggleModelAnswer(this)">Show Model Answer</button>
+      <div class="model-answer">${lv.reflection.model}</div>
+    `;
+  }
+}
+
+function toggleModelAnswer(btn) {
+  const drawer = btn.nextElementSibling;
+  drawer.classList.toggle('show');
+  btn.textContent = drawer.classList.contains('show') ? 'Hide Model Answer' : 'Show Model Answer';
+}
+
+function renderSortExercise(lv, body, btns) {
+  let selectedChipId = null;
+  const assignments = {};
+
+  body.innerHTML = `
+    <div style="font-size:13.5px; font-weight:700; color:var(--ink-soft); margin-bottom:6px;">
+      TAP or DRAG each item into its correct box:
+    </div>
+    <div class="tray" id="sortTray"></div>
+    <div class="bins" id="binsContainer"></div>
+  `;
+
+  const tray = document.getElementById('sortTray');
+  const binsContainer = document.getElementById('binsContainer');
+
+  lv.items.forEach(it => {
+    const chip = document.createElement('div');
+    chip.className = 'chip';
+    chip.textContent = it.text;
+    chip.draggable = true;
+    chip.dataset.id = it.id;
+
+    chip.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', it.id);
+    });
+
+    chip.addEventListener('click', () => {
+      if (chip.classList.contains('correct') || chip.classList.contains('incorrect')) return;
+      document.querySelectorAll('.chip.selected').forEach(c => c.classList.remove('selected'));
+      if (selectedChipId === it.id) {
+        selectedChipId = null;
+        return;
+      }
+      selectedChipId = it.id;
+      chip.classList.add('selected');
+    });
+
+    tray.appendChild(chip);
+  });
+
+  lv.bins.forEach(b => {
+    const binEl = document.createElement('div');
+    binEl.className = 'bin';
+    binEl.dataset.bin = b.id;
+    binEl.innerHTML = `<h4>${b.label}</h4><div class="bin-slot"></div>`;
+
+    binEl.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      binEl.classList.add('dragover');
+    });
+
+    binEl.addEventListener('dragleave', () => binEl.classList.remove('dragover'));
+
+    binEl.addEventListener('drop', (e) => {
+      e.preventDefault();
+      binEl.classList.remove('dragover');
+      const itemId = e.dataTransfer.getData('text/plain');
+      placeChip(itemId, b.id);
+    });
+
+    binEl.addEventListener('click', () => {
+      if (selectedChipId) {
+        placeChip(selectedChipId, b.id);
+        selectedChipId = null;
+        document.querySelectorAll('.chip.selected').forEach(c => c.classList.remove('selected'));
+      }
+    });
+
+    binsContainer.appendChild(binEl);
+  });
+
+  function placeChip(itemId, binId) {
+    const chip = body.querySelector(`.chip[data-id="${itemId}"]`);
+    if (!chip || chip.classList.contains('correct')) return;
+    assignments[itemId] = binId;
+    const slot = binsContainer.querySelector(`.bin[data-bin="${binId}"] .bin-slot`);
+    slot.appendChild(chip);
+  }
+
+  btns.innerHTML = `
+    <button class="btn" id="checkSortBtn">Check My Sorting</button>
+    <button class="btn secondary" onclick="renderActiveExercise()">Reset</button>
+  `;
+
+  document.getElementById('checkSortBtn').onclick = () => {
+    let allGood = true;
+    const hints = [];
+
+    lv.items.forEach(it => {
+      const chip = body.querySelector(`.chip[data-id="${it.id}"]`);
+      const assigned = assignments[it.id];
+      if (assigned === it.bin) {
+        chip.classList.remove('incorrect');
+        chip.classList.add('correct');
+      } else {
+        chip.classList.remove('correct');
+        chip.classList.add('incorrect');
+        allGood = false;
+        hints.push(it.hint);
+      }
+    });
+
+    if (allGood) {
+      showFeedback('good', `<b>Terrific job! All correctly sorted! 🎉</b><br>${lv.why}`);
+      markActiveLevelComplete();
+    } else {
+      showFeedback('bad', `<b>Take another look at the pink cards:</b><br>• ${hints.join('<br>• ')}`);
+    }
+  };
+}
+
+function renderGridExercise(lv, body, btns) {
+  const userGrid = new Array(lv.code.length).fill(0);
+
+  body.innerHTML = `
+    <div class="code-row">Target Code: <b>${lv.code.join(' ')}</b></div>
+    <div class="painter-wrap">
+      <div class="painter" id="painterGrid" style="grid-template-columns: repeat(${lv.cols}, 38px);"></div>
+    </div>
+    ${lv.countField ? `
+      <div class="field-row" style="max-width:380px; margin: 0 auto 12px;">
+        <label>${lv.countField.label}</label>
+        <input type="number" id="countInput" placeholder="Type a number...">
+      </div>
+    ` : ''}
+  `;
+
+  const painter = document.getElementById('painterGrid');
+  userGrid.forEach((_, idx) => {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.onclick = () => {
+      userGrid[idx] = userGrid[idx] ? 0 : 1;
+      cell.classList.toggle('on');
+    };
+    painter.appendChild(cell);
+  });
+
+  btns.innerHTML = `
+    <button class="btn" id="checkGridBtn">Check My Pixel Picture</button>
+    <button class="btn secondary" onclick="renderActiveExercise()">Reset</button>
+  `;
+
+  document.getElementById('checkGridBtn').onclick = () => {
+    const gridMatches = userGrid.every((val, idx) => val === lv.code[idx]);
+    let countMatches = true;
+
+    if (lv.countField) {
+      const userCount = parseInt(document.getElementById('countInput').value, 10);
+      countMatches = (userCount === lv.countField.answer);
+    }
+
+    if (gridMatches && countMatches) {
+      showFeedback('good', `<b>Hooray! You revealed the secret icon! 🎉</b><br>${lv.why}`);
+      markActiveLevelComplete();
+    } else if (!gridMatches) {
+      showFeedback('bad', `<b>The picture is not matching the code yet.</b> Look at the code above: <b>1</b> means colored, <b>0</b> means blank!`);
+    } else {
+      showFeedback('bad', `<b>The picture is correct, but check your total count!</b> Count all the colored 1s in the heart.`);
+    }
+  };
+}
+
+function renderTypeExercise(lv, body, btns) {
+  body.innerHTML = lv.fields.map(f => `
+    <div class="field-row" style="max-width: 320px;">
+      <input type="${f.type}" id="${f.id}" placeholder="${f.placeholder}" autocomplete="off">
+    </div>
+  `).join('');
+
+  btns.innerHTML = `<button class="btn" id="checkTypeBtn">Check My Answer</button>`;
+
+  document.getElementById('checkTypeBtn').onclick = () => {
+    let allGood = true;
+    lv.fields.forEach(f => {
+      const inputEl = document.getElementById(f.id);
+      const val = inputEl.value.trim().toLowerCase();
+      if (!f.answers.includes(val)) {
+        allGood = false;
+        inputEl.style.borderColor = 'var(--bad)';
+      } else {
+        inputEl.style.borderColor = 'var(--good)';
+      }
+    });
+
+    if (allGood) {
+      showFeedback('good', `<b>Spot on! You cracked the code! 🎉</b><br>${lv.why}`);
+      markActiveLevelComplete();
+    } else {
+      showFeedback('bad', `<b>Not quite yet.</b> ${lv.hintWrong}`);
+    }
+  };
+}
+
+function renderMazeExercise(lv, body, btns) {
+  const maze = lv.grid.map(r => r.slice());
+  const rows = maze.length;
+  const cols = maze[0].length;
+  let startPos = null;
+
+  maze.forEach((r, rIdx) => {
+    r.forEach((cell, cIdx) => {
+      if (cell === 2) startPos = { r: rIdx, c: cIdx };
+    });
+  });
+
+  let currentPos = { ...startPos };
+  let reachedGoal = false;
+
+  body.innerHTML = `
+    <div class="maze-wrap">
+      <div class="maze-grid" id="mazeGrid" style="grid-template-columns: repeat(${cols}, 48px);"></div>
+      <div class="maze-msg" id="mazeStatus">Use the arrow buttons to guide Robo 🤖 to the flag 🏁!</div>
+      <div class="maze-controls">
+        <div></div>
+        <button class="maze-btn" id="btnUp">⬆️</button>
+        <div></div>
+        <button class="maze-btn" id="btnLeft">⬅️</button>
+        <button class="maze-btn" id="btnResetMaze" title="Restart">🔄</button>
+        <button class="maze-btn" id="btnRight">➡️</button>
+        <div></div>
+        <button class="maze-btn" id="btnDown">⬇️</button>
+        <div></div>
+      </div>
+    </div>
+  `;
+
+  const gridEl = document.getElementById('mazeGrid');
+  const statusEl = document.getElementById('mazeStatus');
+
+  function drawMaze() {
+    gridEl.innerHTML = '';
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const cell = document.createElement('div');
+        const val = maze[r][c];
+        cell.className = 'maze-cell ' + (val === 0 ? 'wall' : (val === 3 ? 'goal' : 'open'));
+        if (currentPos.r === r && currentPos.c === c) cell.textContent = '🤖';
+        else if (val === 3) cell.textContent = '🏁';
+        gridEl.appendChild(cell);
+      }
+    }
+  }
+
+  function moveRobo(dr, dc) {
+    if (reachedGoal) return;
+    const nr = currentPos.r + dr;
+    const nc = currentPos.c + dc;
+
+    if (nr < 0 || nr >= rows || nc < 0 || nc >= cols || maze[nr][nc] === 0) {
+      statusEl.textContent = "Bump! That's a wall — try another direction!";
+      return;
+    }
+
+    currentPos = { r: nr, c: nc };
+    drawMaze();
+
+    if (maze[nr][nc] === 3) {
+      reachedGoal = true;
+      statusEl.textContent = "Goal reached! 🎉 Robo found the prize!";
+      showFeedback('good', `<b>Awesome navigating! 🎉</b><br>${lv.why}`);
+      markActiveLevelComplete();
+      return;
+    }
+
+    // Check if dead end (only 1 open neighbor)
+    let openCount = 0;
+    [[nr-1, nc], [nr+1, nc], [nr, nc-1], [nr, nc+1]].forEach(([rr, cc]) => {
+      if (rr >= 0 && rr < rows && cc >= 0 && cc < cols && maze[rr][cc] !== 0) openCount++;
+    });
+
+    if (openCount === 1) {
+      statusEl.textContent = "Dead end! Back up and try another path — that's trial and error!";
+    } else {
+      statusEl.textContent = "Keep going! Find the way to the flag.";
+    }
+  }
+
+  document.getElementById('btnUp').onclick = () => moveRobo(-1, 0);
+  document.getElementById('btnDown').onclick = () => moveRobo(1, 0);
+  document.getElementById('btnLeft').onclick = () => moveRobo(0, -1);
+  document.getElementById('btnRight').onclick = () => moveRobo(0, 1);
+  document.getElementById('btnResetMaze').onclick = () => {
+    currentPos = { ...startPos };
+    reachedGoal = false;
+    statusEl.textContent = "Reset to start! Guide Robo to the flag.";
+    drawMaze();
+  };
+
+  drawMaze();
+  btns.innerHTML = '';
+}
+
+function renderReorderExercise(lv, body, btns) {
+  let order = [...lv.items.map(i => i.id)];
+  order = [order[1], order[0], order[2]]; // Initial shuffle
+
+  body.innerHTML = `
+    <div style="font-size:13.5px; font-weight:700; color:var(--ink-soft); margin-bottom:8px;">
+      DRAG or TAP two steps to swap them into the correct order:
+    </div>
+    <div class="reorder-list" id="reorderList"></div>
+  `;
+
+  const listEl = document.getElementById('reorderList');
+  let selectedRow = null;
+
+  function renderList() {
+    listEl.innerHTML = '';
+    order.forEach(id => {
+      const item = lv.items.find(i => i.id === id);
+      const row = document.createElement('div');
+      row.className = 'reorder-item';
+      row.draggable = true;
+      row.dataset.id = id;
+      row.innerHTML = `<span class="handle">☰</span> <span>${item.text}</span>`;
+
+      row.addEventListener('dragstart', (e) => e.dataTransfer.setData('text/plain', id));
+      row.addEventListener('dragover', (e) => e.preventDefault());
+      row.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const draggedId = e.dataTransfer.getData('text/plain');
+        swapRows(draggedId, id);
+      });
+
+      row.addEventListener('click', () => {
+        if (!selectedRow) {
+          selectedRow = row;
+          row.classList.add('selected');
+        } else if (selectedRow === row) {
+          selectedRow.classList.remove('selected');
+          selectedRow = null;
+        } else {
+          swapRows(selectedRow.dataset.id, id);
+          selectedRow.classList.remove('selected');
+          selectedRow = null;
+        }
+      });
+
+      listEl.appendChild(row);
+    });
+  }
+
+  function swapRows(fromId, toId) {
+    const fromIdx = order.indexOf(fromId);
+    const toIdx = order.indexOf(toId);
+    if (fromIdx < 0 || toIdx < 0) return;
+    order.splice(fromIdx, 1);
+    order.splice(toIdx, 0, fromId);
+    renderList();
+  }
+
+  renderList();
+
+  btns.innerHTML = `
+    <button class="btn" id="checkOrderBtn">Check Loop Order</button>
+    <button class="btn secondary" onclick="renderActiveExercise()">Reset</button>
+  `;
+
+  document.getElementById('checkOrderBtn').onclick = () => {
+    let allOk = true;
+    order.forEach((id, idx) => {
+      const row = listEl.querySelector(`.reorder-item[data-id="${id}"]`);
+      if (id === lv.correctOrder[idx]) {
+        row.classList.remove('incorrect');
+        row.classList.add('correct');
+      } else {
+        row.classList.remove('correct');
+        row.classList.add('incorrect');
+        allOk = false;
+      }
+    });
+
+    if (allOk) {
+      showFeedback('good', `<b>Perfect robotics sequence! 🎉</b><br>${lv.why}`);
+      markActiveLevelComplete();
+    } else {
+      showFeedback('bad', `<b>Not in order yet!</b> Remember the loop: SENSE (eyes first) $\\rightarrow$ THINK (decide) $\\rightarrow$ ACT (move wheels)!`);
+    }
+  };
+}
+
+function renderMcqExercise(lv, body, btns) {
+  body.innerHTML = `<div class="options" id="mcqOptions"></div>`;
+  const optsWrap = document.getElementById('mcqOptions');
+  let answered = false;
+
+  lv.options.forEach(opt => {
+    const optEl = document.createElement('div');
+    optEl.className = 'option';
+    optEl.innerHTML = `<span>${opt.text}</span><span class="mark"></span>`;
+
+    optEl.onclick = () => {
+      if (answered) return;
+      optsWrap.querySelectorAll('.option').forEach(b => {
+        b.classList.remove('correct', 'incorrect');
+        b.querySelector('.mark').textContent = '';
+      });
+
+      if (opt.correct) {
+        optEl.classList.add('correct');
+        optEl.querySelector('.mark').textContent = '✓';
+        showFeedback('good', `<b>Correct! 🎉</b> ${opt.feedback}<br><br>${lv.why}`);
+        answered = true;
+        markActiveLevelComplete();
+      } else {
+        optEl.classList.add('incorrect');
+        optEl.querySelector('.mark').textContent = '✕';
+        showFeedback('bad', `<b>Not quite.</b> ${opt.feedback}`);
+      }
+    };
+
+    optsWrap.appendChild(optEl);
+  });
+
+  btns.innerHTML = '';
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  renderHome();
+});
+</script>
+</body>
+</html>
