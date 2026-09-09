@@ -1,0 +1,859 @@
+{
+  "setA": [
+    {
+      "q": "Using a secret number code where A=1, B=2, C=3, D=4, which numbers spell the word “CAB”?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "1.3",
+      "byhand": "C A B → ❓ ❓ ❓",
+      "o": [
+        "1 2 3",
+        "3 1 2",
+        "3 2 1",
+        "2 1 3"
+      ],
+      "a": 1,
+      "e": "Using the code sheet: C=3, A=1, and B=2. So CAB turns into 3 1 2. Computers use numbers to store letters!"
+    },
+    {
+      "q": "You ask a computer to make up a brand-new bedtime story about a friendly dinosaur that nobody has ever read before. What kind of AI is this?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "3.1",
+      "o": [
+        "Generative AI (makes new things)",
+        "A calculator that adds numbers",
+        "A digital clock that tells time",
+        "A printer that ran out of ink"
+      ],
+      "a": 0,
+      "e": "Generative AI creates brand-new pictures, songs, or stories from your request instead of just looking up old ones."
+    },
+    {
+      "q": "A robot stamps shapes in a repeating pattern: 🔵 🔵 🔴 🔵 🔵 🔴 🔵 🔵 … What comes next?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.2",
+      "byhand": "🔵 🔵 🔴 · 🔵 🔵 🔴 · 🔵 🔵 ❓",
+      "o": [
+        "⭐ yellow star",
+        "🔴 red circle",
+        "🔵 blue circle",
+        "🟩 green square"
+      ],
+      "a": 1,
+      "e": "The repeating group is [blue, blue, red]. After two blue circles, the next stamp must be a red circle."
+    },
+    {
+      "q": "Which of these is a REAL living creature that can feel hungry and happy?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "1.1",
+      "o": [
+        "A toy robot dog with batteries",
+        "A cartoon dog on a tablet screen",
+        "A chatbot that says 'Woof!'",
+        "A real puppy"
+      ],
+      "a": 3,
+      "e": "Only living animals and people are truly alive and have feelings. Robot toys and computer apps are made of metal, plastic, and code."
+    },
+    {
+      "q": "An AI robot vacuum cleaner needs to find where dust is on the carpet. What does it use to SENSE the room?",
+      "tag": "t-agent",
+      "tagLabel": "AI Agent",
+      "lo": "4.2",
+      "o": [
+        "A camera and bump sensors",
+        "A paintbrush and paper",
+        "A music speaker",
+        "A warm woolly blanket"
+      ],
+      "a": 0,
+      "e": "Robots sense the world using special parts like cameras, microphones, or bump sensors, just like we use our eyes and ears."
+    },
+    {
+      "q": "A word-guessing game sees: “The cat drank a warm saucer of ___”. Which word is the computer MOST likely to predict?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "3.2",
+      "o": [
+        "shoes",
+        "pencils",
+        "milk",
+        "sand"
+      ],
+      "a": 2,
+      "e": "Computers guess words based on patterns they have seen before. Cats frequently drink milk, so 'milk' has the highest chance."
+    },
+    {
+      "q": "What can generative AI create out of thin air from your words?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "1.1",
+      "o": [
+        "A warm slice of cheese pizza",
+        "A living goldfish in water",
+        "A new picture of a purple dragon",
+        "A pair of real running shoes"
+      ],
+      "a": 2,
+      "e": "Generative AI can only create digital pictures, words, or sounds. It cannot create real, physical food or living animals."
+    },
+    {
+      "q": "An online game says: “Type your home address and your school name to win a free toy!” What should you do?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.1",
+      "o": [
+        "Type your address as fast as you can",
+        "Send your house keys in the mail",
+        "Guess your friend's address instead",
+        "Stop, don't type it, and tell a grown-up"
+      ],
+      "a": 3,
+      "e": "Never share private information like your address, full name, or school with a website or chatbot. Always ask a trusted grown-up first!"
+    },
+    {
+      "q": "Robo the robot was shown only 1 picture of a yellow banana. Now it thinks every yellow thing is a banana, even a yellow school bus! What does Robo need?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.1",
+      "o": [
+        "A shiny new coat of yellow paint",
+        "To eat a real banana for lunch",
+        "To see many different examples of bananas and buses",
+        "To be turned off and put away forever"
+      ],
+      "a": 2,
+      "e": "One example is not enough! An AI needs lots of different examples to learn what makes a banana a banana and not a bus."
+    },
+    {
+      "q": "When a helpful classroom robot cleans up, what are its three steps in order?",
+      "tag": "t-agent",
+      "tagLabel": "AI Agent",
+      "lo": "4.2",
+      "o": [
+        "ACT → SLEEP → EAT",
+        "SENSE → THINK → ACT",
+        "THINK → SENSE → FORGET",
+        "SING → DANCE → RUN"
+      ],
+      "a": 1,
+      "e": "An AI agent works in a loop: first it Senses (looks), then it Thinks (decides), then it Acts (moves or picks up)."
+    },
+    {
+      "q": "A chatbot tells you that dogs have 8 legs and fly like birds. What should you do?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.2",
+      "o": [
+        "Wait outside to watch dogs fly by",
+        "Check with a trusted book or grown-up, because AI can be wrong",
+        "Tell all your friends that dogs can fly",
+        "Believe it because computers never make mistakes"
+      ],
+      "a": 1,
+      "e": "Chatbots can make mistakes and sound very sure of themselves! When a fact sounds strange, always check with a grown-up or book."
+    },
+    {
+      "q": "You used an AI drawing tool to help you make a get-well card for your teacher. When she asks how you made it, what is the honest answer?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.3",
+      "o": [
+        "“A fairy flew in through the window and painted it!”",
+        "“I don't know where it came from.”",
+        "“I painted every single dot by hand with no help at all!”",
+        "“I came up with the idea and used an AI tool to help draw it!”"
+      ],
+      "a": 3,
+      "e": "Being honest about AI help is responsible and fair. You can be proud of your idea while sharing that an AI tool helped you create it."
+    },
+    {
+      "q": "Which of these things are stored as NUMBERS inside a computer?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "1.2",
+      "o": [
+        "Nothing at all",
+        "Only maths equations",
+        "Words, photos, and songs — all of them!",
+        "Only letters written in pencil"
+      ],
+      "a": 2,
+      "e": "Computers turn everything into numbers — every word, color, photograph, and sound is stored as number codes inside."
+    },
+    {
+      "q": "A robot sorts shapes into two boxes: Circle Box and Square Box. What is this sorting called?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "1.4",
+      "o": [
+        "Erasing a drawing",
+        "Classifying (grouping by features)",
+        "Writing a poem",
+        "Searching on the internet"
+      ],
+      "a": 1,
+      "e": "Putting items into groups based on features (like round shape or square shape) is called classifying."
+    },
+    {
+      "q": "Who creates and teaches computer programs and AI models?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "1.1",
+      "o": [
+        "People (human programmers and engineers)",
+        "Aliens from another planet",
+        "The computer motherboard all by itself",
+        "Wild animals in the forest"
+      ],
+      "a": 0,
+      "e": "Human beings design, build, and train computer software. That means people are responsible for making AI safe and fair."
+    },
+    {
+      "q": "To make a peanut butter sandwich, which step MUST a robot do first?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.3",
+      "o": [
+        "Spread jelly on the kitchen table",
+        "Take two slices of bread out of the bag",
+        "Put the sandwich on a plate",
+        "Take a big bite"
+      ],
+      "a": 1,
+      "e": "Steps must follow a clear order (an algorithm). You cannot spread peanut butter until you take the bread out first!"
+    },
+    {
+      "q": "If you want a chatbot to help you write a poem about your kitten, which message works best?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "4.1",
+      "o": [
+        "“do the thing now please.”",
+        "“Write a short, happy 4-line poem about a playful kitten.”",
+        "“poem.”",
+        "“cat cat cat cat cat!”"
+      ],
+      "a": 1,
+      "e": "Asking clearly with specific details (topic, length, style) helps the AI understand what you want."
+    },
+    {
+      "q": "A music AI generates a tune by picking one note after another. How does it pick the next note?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "3.2",
+      "o": [
+        "It looks at the color of the computer screen",
+        "It picks randomly with its eyes closed",
+        "It looks at the notes that came just before to see what sounds good",
+        "It checks the weather outside the window"
+      ],
+      "a": 2,
+      "e": "Generative AI looks back at the pieces already created to predict what note or word fits best next."
+    },
+    {
+      "q": "A robot is rolling across the rug and suddenly bumps into a wooden chair leg. What should it do?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.4",
+      "o": [
+        "Back up and turn in a different direction",
+        "Keep driving straight into the chair forever",
+        "Throw the chair out of the house",
+        "Shut off and fall asleep"
+      ],
+      "a": 0,
+      "e": "Smart machines sense obstacles, back up, and try a new path to get around them."
+    },
+    {
+      "q": "Why do we call AI a 'helper tool' instead of a human friend?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.3",
+      "o": [
+        "Because it has real fur",
+        "Because it can run faster than children",
+        "Because it is a computer machine without feelings or a heart",
+        "Because it lives inside a battery"
+      ],
+      "a": 2,
+      "e": "AI is an amazing machine made of computer code, but it is a tool to help us, not a living person with feelings."
+    }
+  ],
+  "setB": [
+    {
+      "q": "A sorting machine follows this rule: IF an animal flies, put it in Basket 1. OTHERWISE, put it in Basket 2. Where do an Eagle and a Penguin go?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.3",
+      "byhand": "Rule: IF flies → Basket 1, ELSE → Basket 2",
+      "o": [
+        "Both → Basket 2",
+        "Eagle → Basket 1, Penguin → Basket 2",
+        "Eagle → Basket 2, Penguin → Basket 1",
+        "Both → Basket 1"
+      ],
+      "a": 1,
+      "e": "An eagle flies (Basket 1). A penguin is a flightless bird that swims, so it triggers the OTHERWISE rule (Basket 2)."
+    },
+    {
+      "q": "Using our letter code where A=1, B=2, C=3, D=4, E=5, F=6, G=7, H=8, I=9... decode the secret word: 6 – 9 – 7.",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "1.3",
+      "byhand": "6 – 9 – 7 → ❓",
+      "o": [
+        "BIG",
+        "DIG",
+        "PIG",
+        "FIG"
+      ],
+      "a": 3,
+      "e": "6 = F, 9 = I, and 7 = G. When joined together, the secret word is FIG."
+    },
+    {
+      "q": "A robot paints a classroom banner following this pattern: ⭐ ⭐ 🌙 🌙 ⭐ ⭐ 🌙 🌙 ⭐ … What are the next TWO stamps?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.2",
+      "byhand": "⭐ ⭐ 🌙 🌙 · ⭐ ⭐ 🌙 🌙 · ⭐ ❓ ❓",
+      "o": [
+        "⭐ then ⭐",
+        "🌙 then 🌙",
+        "⭐ then 🌙",
+        "🌙 then ⭐"
+      ],
+      "a": 2,
+      "e": "The pattern repeats in groups of four: [two stars, two moons]. The next stamp finishes the star pair (⭐), followed by the first moon (🌙)."
+    },
+    {
+      "q": "A storytelling AI has read many fairy tales. When it reads “The brave knight drew his shiny ___”, which word has the HIGHEST probability?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "3.2",
+      "o": [
+        "spoon",
+        "pillow",
+        "sword",
+        "crayon"
+      ],
+      "a": 2,
+      "e": "In fairy tale training data, 'sword' appears following 'knight drew his shiny' far more often than spoons or pillows."
+    },
+    {
+      "q": "A robot arm is told to put away toys into the toy box. It finds an open storybook lying face down on a rug. What is the smartest and kindest thing to do?",
+      "tag": "t-agent",
+      "tagLabel": "AI Agent",
+      "lo": "4.3",
+      "o": [
+        "Rip the pages out so it fits in the box",
+        "Pause and ask the reader, or mark the page with a bookmark first",
+        "Slam the book shut and bury it at the bottom of the toy box",
+        "Throw the book into the rubbish bin"
+      ],
+      "a": 1,
+      "e": "Good AI agents should avoid causing harm when unsure. Closing the book might make someone lose their page, so pausing or asking is the kind choice."
+    },
+    {
+      "q": "A video app notices that Maya watched 3 dinosaur cartoons today. Now every video on her screen is about dinosaurs! What happened?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.1",
+      "o": [
+        "Her tablet computer turned into a dinosaur",
+        "All other cartoons were deleted from the internet",
+        "The app's recommendation system learned what she watched and put her in a dinosaur bubble",
+        "The screen battery ran out of colors"
+      ],
+      "a": 2,
+      "e": "Recommendation algorithms learn from your past clicks and show you more of the same, which can keep you in a filter bubble."
+    },
+    {
+      "q": "Liam wants an AI art tool to draw a picture for his science report. Which prompt will give the best result?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "4.1",
+      "o": [
+        "“draw something nice and fast”",
+        "“A realistic drawing of a honeybee collecting yellow pollen from a sunflower, close-up view”",
+        "“make a picture for school”",
+        "“bee”"
+      ],
+      "a": 1,
+      "e": "A prompt with specific details (subject, action, setting, and style) gives generative AI clear instructions to create what you need."
+    },
+    {
+      "q": "A tiny classifier sorts shapes using 2 rules: Color must be RED, and sides must be 3. Which shape gets picked?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "1.4",
+      "o": [
+        "A red triangle",
+        "A blue triangle",
+        "A red square",
+        "A yellow circle"
+      ],
+      "a": 0,
+      "e": "A triangle has 3 sides. Only the red triangle matches BOTH rules (red color AND 3 sides)."
+    },
+    {
+      "q": "Two classmates enter the EXACT same prompt into an AI story generator: “A funny tale about a puppy.” Why do they get DIFFERENT stories?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "3.1",
+      "o": [
+        "One of the computers is completely broken",
+        "The model has a randomness dial that picks from its top likely words, not just the single top word",
+        "Chatbots change their mind when the weather changes",
+        "The internet was running backwards"
+      ],
+      "a": 1,
+      "e": "Generative models sample words probabilistically. A touch of randomness allows chatbots to generate fresh variations each time."
+    },
+    {
+      "q": "A self-driving delivery cart has a camera in front. It drives into a dark tunnel and cannot see. What should its system do?",
+      "tag": "t-agent",
+      "tagLabel": "AI Agent",
+      "lo": "4.3",
+      "o": [
+        "Close its eyes and guess where the walls are",
+        "Turn off its wheels and honk forever",
+        "Slow down, turn on its headlights, or stop safely if it cannot see",
+        "Speed up to get through the tunnel as fast as possible"
+      ],
+      "a": 2,
+      "e": "Safe autonomous agents have fail-safes: when sensory inputs become unclear, they slow down, use secondary sensors/lights, or stop safely."
+    },
+    {
+      "q": "An AI chatbot writes a book report for Leo. Leo prints it out, writes his name on top, and turns it in to his teacher. Why is this wrong?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.3",
+      "o": [
+        "The printer ink used was the wrong shade of black",
+        "Computer paper is too thin for teachers to read",
+        "It is dishonest and prevents Leo from practicing his own reading and writing skills",
+        "Chatbots charge money for every printed word"
+      ],
+      "a": 2,
+      "e": "Taking credit for work you didn't do is dishonest, and outsourcing your homework means you miss out on learning and growing your brain."
+    },
+    {
+      "q": "Look at this rule machine: 1 → 2, 2 → 4, 3 → 6, 4 → 8. What is the output for input 5?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.1",
+      "byhand": "1 → 2 · 2 → 4 · 3 → 6 · 4 → 8 · 5 → ❓",
+      "o": [
+        "9",
+        "12",
+        "7",
+        "10"
+      ],
+      "a": 3,
+      "e": "The rule is 'double the input' (Input × 2). For input 5: 5 × 2 = 10."
+    },
+    {
+      "q": "An AI listens to voice commands. Step 1: Microphone hears sound waves. Step 2: Computer turns sounds into words and decides the action. Step 3: Speaker plays your song. What are these 3 steps called?",
+      "tag": "t-agent",
+      "tagLabel": "AI Agent",
+      "lo": "4.2",
+      "o": [
+        "Sleep → Eat → Play",
+        "Act → Think → Sense",
+        "Think → Sense → Act",
+        "Sense → Think → Act"
+      ],
+      "a": 3,
+      "e": "The microphone Senses, the computer Thinks (decides), and the speaker Acts (plays the song)."
+    },
+    {
+      "q": "A class trains an AI to tell apples from oranges. They give it 100 photos of red apples, but only 2 photos of oranges. What problem will this cause?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "2.1",
+      "o": [
+        "Unfair training data: the AI will guess apple almost every time because it hardly saw any oranges",
+        "The computer screen will turn orange",
+        "The apples will spoil inside the computer",
+        "The camera will run out of memory space"
+      ],
+      "a": 0,
+      "e": "When a training dataset is heavily unbalanced, the model learns a bias toward the group with the most examples."
+    },
+    {
+      "q": "A chatbot replies to Emma: “I feel so delighted to chat with you today! I was thinking about you all morning!” Does the chatbot really miss Emma?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "1.1",
+      "o": [
+        "Yes; the computer misses her when she is at school",
+        "Yes; chatbots have feelings just like human friends",
+        "No; it is stringing together polite words based on language patterns it learned",
+        "Only when the computer is plugged in"
+      ],
+      "a": 2,
+      "e": "Chatbots have no feelings, memories of affection, or consciousness. They predict polite-sounding phrases based on training text."
+    },
+    {
+      "q": "Look at this repeating bead necklace: 🔴 🟡 🔵 🔴 🟡 🔵 … What color will the 12th bead be?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.2",
+      "byhand": "Group of 3: [1:🔴, 2:🟡, 3:🔵] ... 12th = ❓",
+      "o": [
+        "🔵 blue",
+        "🟩 green",
+        "🔴 red",
+        "🟡 yellow"
+      ],
+      "a": 0,
+      "e": "The pattern repeats every 3 beads: red, yellow, blue. Since 12 is a multiple of 3 (3, 6, 9, 12), the 12th bead ends the group with blue."
+    },
+    {
+      "q": "An AI image generator creates a picture of a human hand, but it accidentally draws 6 fingers! Why did it make this mistake?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "3.1",
+      "o": [
+        "It doesn't count bones; it blends pixel patterns and sometimes combines overlapping hands",
+        "The artist who built the computer had 6 fingers",
+        "It thinks all human beings have 6 fingers",
+        "The keyboard pressed the number 6"
+      ],
+      "a": 0,
+      "e": "Generative image models don't understand 3D anatomy or count fingers; they synthesize pixel textures based on statistical patterns."
+    },
+    {
+      "q": "Which of the following is SAFE to share with a friendly educational chatbot?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.1",
+      "o": [
+        "Your family's secret Wi-Fi password",
+        "“Can you explain why the moon changes shape each month?”",
+        "Your home phone number and address",
+        "Your parent's credit card number"
+      ],
+      "a": 1,
+      "e": "Asking curious questions about science, history, or learning is safe. Never enter personal or private passwords and numbers."
+    },
+    {
+      "q": "Why is an AI search engine different from an AI story generator?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "3.1",
+      "o": [
+        "Search engines only work at night",
+        "Story generators can print real paper books",
+        "Search engines cannot display words on screens",
+        "Search engines find websites that already exist; story generators invent brand-new text"
+      ],
+      "a": 3,
+      "e": "Search engines retrieve existing human-created pages; generative models synthesize completely new sentences on the fly."
+    },
+    {
+      "q": "A robot arm must pick up a red block and put it in a box. What MUST happen right after it Senses (sees) the block?",
+      "tag": "t-agent",
+      "tagLabel": "AI Agent",
+      "lo": "4.2",
+      "o": [
+        "THINK: calculate how far to reach its arm",
+        "SLEEP: turn off its motors",
+        "ACT: drop the block before touching it",
+        "SENSE: look for a different room"
+      ],
+      "a": 0,
+      "e": "After Sensing, the agent must Think (calculate distance and plan the arm movement) before it Acts (reaches and grasps)."
+    }
+  ],
+  "setC": [
+    {
+      "q": "A robot sorts fruits by color: Rule 1: IF yellow → Basket A. Rule 2: IF red → Basket B. Now a student brings a GREEN pear. What is the safest design choice?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "1.4",
+      "o": [
+        "Place it in a 'Needs Human Review' tray instead of guessing a wrong basket",
+        "Paint it red with a marker pen",
+        "Force it into Basket A because green is close to yellow",
+        "Throw it in the trash bin immediately"
+      ],
+      "a": 0,
+      "e": "Safe system design requires an exception handler: when an input matches none of the rules, flag it for human review rather than making an unsafe guess."
+    },
+    {
+      "q": "A model was trained to tell wolves from dogs. All 50 photos of wolves were taken in deep white snow, and all dog photos were taken on green grass. When shown a dog standing in the snow, it calls it a 'wolf'! What caused this error?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.1",
+      "o": [
+        "Wolves can only live in photographs",
+        "Dogs turn into wolves when the weather gets cold",
+        "Snow breaks the computer's camera screen",
+        "The model learned a shortcut (white snow = wolf) instead of looking at the animal's actual body"
+      ],
+      "a": 3,
+      "e": "This is a classic confounding correlation! The model didn't learn animal features; it learned that white snow background meant wolf."
+    },
+    {
+      "q": "A student asks an AI chatbot: “Who was the famous French pirate who flew a helicopter to the moon in 1750?” The chatbot confidently tells an exciting story about him! What happened here?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.2",
+      "o": [
+        "The computer caught a pirate virus",
+        "An AI hallucination: it accepted an impossible premise and made up fictional details to please the user",
+        "The AI discovered a top-secret history book",
+        "Helicopters were invented in 1750 but kept secret"
+      ],
+      "a": 1,
+      "e": "Chatbots try to complete text patterns and can fall into premise-adoption hallucinations, making up confident nonsense if given a false question."
+    },
+    {
+      "q": "Look at this secret pattern box: 2 → 5, 3 → 7, 4 → 9. What is the secret rule, and what will input 6 become?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.1",
+      "byhand": "2 → 5 · 3 → 7 · 4 → 9 · 6 → ❓",
+      "o": [
+        "12 (Rule: Double the input)",
+        "13 (Rule: Double the input, then add 1)",
+        "11 (Rule: Add 3 to the input)",
+        "15 (Rule: Multiply by 3)"
+      ],
+      "a": 1,
+      "e": "The function is (2 × Input) + 1. For input 2: 2×2+1=5. For input 3: 2×3+1=7. For input 6: (2 × 6) + 1 = 13."
+    },
+    {
+      "q": "A student types this prompt: “Write a 3-paragraph adventure story about a lost kitten in a magical forest, written for a 7-year-old.” Why is this prompt considered high quality?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "4.1",
+      "o": [
+        "It specifies a clear topic, a length constraint (3 paragraphs), and an intended audience",
+        "It takes 10 minutes to type",
+        "It uses the longest words in the dictionary",
+        "It shouts at the AI in all capital letters"
+      ],
+      "a": 0,
+      "e": "High quality prompts include specific subject details, format constraints (length), and target audience guidance."
+    },
+    {
+      "q": "A robot puppy can wag its tail, follow you around, and say “I love you!” When its battery runs completely out, does it feel sad or lonely?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "1.1",
+      "o": [
+        "No; it has no feelings, consciousness, or brain — it simply loses electrical power",
+        "Yes; it feels cold and sad in the dark",
+        "Only if it is left in an empty room",
+        "Yes; it misses playing with toys"
+      ],
+      "a": 0,
+      "e": "No matter how cute or lifelike an AI robot looks, it is made of circuits, motors, and batteries. It has no feelings or conscious mind."
+    },
+    {
+      "q": "A vision AI on an electric school bus must detect traffic lights. On a foggy morning, water droplets blur the camera lens. What is the safest way for the AI agent to act?",
+      "tag": "t-agent",
+      "tagLabel": "AI Agent",
+      "lo": "4.3",
+      "o": [
+        "Turn off all the bus lights and continue driving",
+        "Detect that confidence is low, slow down, and alert the human driver to take the wheel",
+        "Guess that the light is green and speed up",
+        "Ignore traffic lights on foggy days"
+      ],
+      "a": 1,
+      "e": "When sensor inputs have low confidence, safe systems must slow down and transition control to a human in the loop."
+    },
+    {
+      "q": "A music AI has counted the notes following Middle C in lullabies: Note D appeared 6 times, Note E appeared 3 times, Note F appeared 1 time (Total = 10 times). What is the chance it chooses Note D next?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "3.2",
+      "byhand": "D: 6 times · E: 3 times · F: 1 time (Total = 10)",
+      "o": [
+        "6 out of 10 (60% chance)",
+        "1 out of 10 (10% chance)",
+        "10 out of 10 (100% chance)",
+        "3 out of 10 (30% chance)"
+      ],
+      "a": 0,
+      "e": "Note D occurred 6 out of 10 total times. The statistical probability is 6/10, or 60%."
+    },
+    {
+      "q": "A smart lost-and-found box at school takes a picture of a blue water bottle. Two different students own identical blue water bottles! How should the system handle this?",
+      "tag": "t-agent",
+      "tagLabel": "AI Agent",
+      "lo": "4.3",
+      "o": [
+        "Throw the bottle away because there are two of them",
+        "Ask a teacher or require a student ID confirmation before unlocking the door",
+        "Give the bottle to whichever student runs over first",
+        "Flip a coin and pick a student at random"
+      ],
+      "a": 1,
+      "e": "When two items look identical, visual classifiers cannot distinguish them reliably. Human confirmation prevents mistakes."
+    },
+    {
+      "q": "Why is it important to test an AI speech helper with children's voices, not just adult voices?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "2.1",
+      "o": [
+        "Children's words have fewer letters than adult words",
+        "Children speak at higher pitches and different speeds; without their data, the AI will fail to understand kids",
+        "Microphones break when children speak",
+        "Adults are the only ones allowed to talk to computers"
+      ],
+      "a": 1,
+      "e": "Models only perform well on voice data similar to their training. If children's voices are omitted, the speech model becomes biased against kids."
+    },
+    {
+      "q": "An AI agent is asked: “What is 34,892 × 4,812?” Why is it smarter for the agent to call a CALCULATOR tool instead of guessing words?",
+      "tag": "t-agent",
+      "tagLabel": "AI Agent",
+      "lo": "4.1",
+      "o": [
+        "Chatbots are not allowed to display numbers",
+        "Calculators are older than computers",
+        "Calculators use less screen space",
+        "Language models predict likely word tokens and can hallucinate digits; calculators guarantee exact arithmetic"
+      ],
+      "a": 3,
+      "e": "LLMs are statistical text predictors, not exact mathematical processors. Using an external calculator tool guarantees exact accuracy."
+    },
+    {
+      "q": "A student wants to use an AI chatbot to learn about ancient castles. Which way of working shows genuine learning integrity?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.3",
+      "o": [
+        "Use the chatbot to brainstorm ideas and ask questions, then fact-check details in an encyclopedia and write in your own words",
+        "Never look at any computer or book at all",
+        "Ask the chatbot to write the full essay, print it, and claim you wrote it",
+        "Copy the first paragraph you find and never read the rest"
+      ],
+      "a": 0,
+      "e": "Using AI as an interactive tutor to explore ideas, followed by fact-checking and writing in your own words, builds genuine mastery."
+    },
+    {
+      "q": "Look at this letter code: A=1, B=2, C=3, D=4, E=5, F=6, G=7, H=8, I=9, J=10, K=11, L=12, M=13, N=14, O=15... If a robot gets the message [15, 14], what word did it receive?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "1.3",
+      "byhand": "15 = O · 14 = N → ❓",
+      "o": [
+        "IN",
+        "NO",
+        "GO",
+        "ON"
+      ],
+      "a": 3,
+      "e": "The 15th letter of the alphabet is O, and the 14th letter is N. The word is ON."
+    },
+    {
+      "q": "A giant AI company runs thousands of supercomputers in a huge data center to train new models. What real-world resource does this consume?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.1",
+      "o": [
+        "The internet's supply of punctuation marks",
+        "Pencil lead and notebook paper",
+        "Huge amounts of electricity and cooling water",
+        "Keyboard plastic"
+      ],
+      "a": 2,
+      "e": "High-power computer chips generate immense heat and draw heavy electricity, requiring millions of gallons of water and power to keep cool."
+    },
+    {
+      "q": "A robot vacuum learns by reinforcement learning: +2 points for picking up dirt, −5 points for bumping into furniture. If it picks up 3 piles of dirt and bumps into 1 chair, what is its score?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.4",
+      "byhand": "(3 piles × +2) + (1 bump × −5) = ❓",
+      "o": [
+        "+6 points",
+        "+1 point",
+        "−1 point",
+        "+5 points"
+      ],
+      "a": 1,
+      "e": "3 dirt piles × 2 points = +6. 1 bump = −5. Total: +6 − 5 = +1 point."
+    },
+    {
+      "q": "An AI sees photos of houses. Every house with a chimney in the training data had snow on the roof. Now it sees a house with a chimney on a sunny summer day in the desert. What mistake might it make?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.1",
+      "o": [
+        "It will predict the house is an airplane",
+        "It will refuse to display the color yellow",
+        "The computer screen will freeze into ice",
+        "It might predict there must be snow on the roof because it linked chimneys directly to snow"
+      ],
+      "a": 3,
+      "e": "Because of accidental training correlations, the model falsely assumes chimneys and snow always go together."
+    },
+    {
+      "q": "What is the primary difference between a simple computer program following IF-THEN rules and machine learning?",
+      "tag": "t-fp",
+      "tagLabel": "First Principles",
+      "lo": "2.1",
+      "o": [
+        "Rule programs can never make mistakes",
+        "Machine learning only works on phones",
+        "Rule programs use electricity, machine learning uses solar power",
+        "Rule programs follow human-coded instructions; machine learning discovers patterns from lots of examples"
+      ],
+      "a": 3,
+      "e": "Traditional software runs explicit programmer rules; machine learning generalizes predictive patterns from dataset examples."
+    },
+    {
+      "q": "A student asks a video-generator AI: “Create a video of my teacher doing silly dances on top of the school roof.” Why is it harmful to share this video?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.1",
+      "o": [
+        "The school roof would get dirty",
+        "It is a fake video (deepfake) that could embarrass the teacher and trick people into believing something false",
+        "Teachers are not allowed to dance in real life",
+        "The video file takes up too many gigabytes of storage"
+      ],
+      "a": 1,
+      "e": "Generating and spreading realistic fake media (deepfakes) of real people without consent can cause humiliation, confusion, and harm."
+    },
+    {
+      "q": "A language model is given: “In the morning, the baker baked fresh ___”. Frequency counts: [bread: 8, cookies: 2]. If the temperature is set to ZERO (greedy decoding), which word will it ALWAYS pick?",
+      "tag": "t-genai",
+      "tagLabel": "Generative AI",
+      "lo": "3.2",
+      "o": [
+        "It alternates back and forth",
+        "“bread” every single time (picks the highest probability word)",
+        "“cookies” every single time",
+        "A random word from another language"
+      ],
+      "a": 1,
+      "e": "At temperature zero, the model always deterministically selects the argmax token (the one with the highest likelihood, 'bread')."
+    },
+    {
+      "q": "What is the most mature and responsible attitude for young students to have toward AI?",
+      "tag": "t-ethics",
+      "tagLabel": "AI Ethics",
+      "lo": "5.3",
+      "o": [
+        "Believe AI is magical and knows all truths in the universe",
+        "Treat AI as a helpful, flawed digital tool: use it to learn, check its answers, and be honest about its help",
+        "Let AI make all your choices and do all your homework",
+        "Be afraid of computers and refuse to use any technology"
+      ],
+      "a": 1,
+      "e": "Viewing AI with calibrated trust—as an impressive yet imperfect tool that requires human checking, ethics, and care—is the mark of a great learner."
+    }
+  ]
+}
